@@ -1,0 +1,27 @@
+! the allowSendEvents setting is the most important line in this file
+! without it, applications in an xterm will not be able to receive the
+! C-t keystroke.  For the ctags and vi programs, this is fatal.
+! the two numerical Border settings make xterm "look" nice under
+! ratpoison.  the other settings are my personal preferences.
+! *.font: -*-courier-medium-r-*-*-*-120-*-*-*-*-*-*
+! *.font: -*-new century schoolbook-medium-r-*-*-13-*-*-*-*-82-iso8859-*
+
+*.foreground: white
+*.background: black
+emacs.foreground: black
+emacs.background: white
+XTerm*allowSendEvents: true
+XTerm*internalBorder:  0
+XTerm*borderColor:     black
+XTerm*eightBitInput:   true
+XTerm*metaSendsEscape: true
+XTerm*borderWidth:     0
+XTerm*multiScroll:     true
+XTerm*utmpInhibit:     false
+XTerm*jumpScroll:      true
+XTerm*loginShell:      true
+XTerm*visualBell:      false
+XTerm*waitForMap:      true
+XTerm*saveLines:       8192
+XTerm*scrollBar:       false
+! XTerm*title:           %h
