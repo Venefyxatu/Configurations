@@ -76,26 +76,16 @@ else
     case $HOST in
         cbelaptop48)
             lprompt '[]' bold green
-            rprompt '()' yellow white
+            rprompt '()' white yellow
             ;;
-        mourningangel*)
-            lprompt '[]' white green
-            rprompt '()' yellow white
+        succubus)
+            lprompt '[]' red green
+            rprompt '()' red white
             ;;
-
-        succubus*)
+        mourningangel)
             lprompt '<>' red yellow
-            rprompt '<>' red white
+            rprompt '<>' red yellow
             ;;
-        muon*)
-            lprompt '<>' red blue
-            rprompt '<>' red white
-            ;;
-        quark*)
-            lprompt '<>' red green
-            rprompt '<>' red white
-            ;;
-
         *)
             if [ ${$(hostname -f)#*.} = "jukie.net" ]; then
                 lprompt '[]' bold white
