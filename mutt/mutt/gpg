@@ -1,0 +1,40 @@
+# Decode application/pgp attachments like so:
+set pgp_decode_command="gpg %?p?--passphrase-fd 0? --no-verbose --batch --output - %f"
+
+# And use this to verify pgp signatures:
+set pgp_verify_command="gpg --no-verbose --batch --output - --verify %s %f"
+
+# How to decrypt pgp encrypted messages:
+set pgp_decrypt_command="gpg --passphrase-fd 0 --no-verbose --batch --output - %f"
+
+# How to pgp sign a message:
+set pgp_sign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --detach-sign --textmode %?a?-u %a? %f"
+
+# How to pgp clearsign a message:
+set pgp_clearsign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --textmode --clearsign %?a?-u %a? %f"
+
+# Import a pgp key from a message into my public keyring as follows:
+set pgp_import_command="gpg --no-verbose --import -v %f"
+
+# Use this to export a key from my public keyring:
+set pgp_export_command="gpg --no-verbose --export --armor %r"
+
+# Verify key information (from the key selection menu):
+set pgp_verify_key_command="gpg --no-verbose --batch --fingerprint --check-sigs %r"
+
+# List my public keyring like so:
+set pgp_list_pubring_command="gpg --no-verbose --batch --with-colons --list-keys %r" 
+
+# List my private keyring like so:
+set pgp_list_secring_command="gpg --no-verbose --batch --with-colons --list-secret-keys %r" 
+
+# Automatically sign outgoing messages
+set pgp_autosign=yes
+
+# Timeout (in seconds) for cached passphrases:
+set pgp_timeout=1800
+
+# Text to show before a good signature:
+set pgp_good_sign="^gpg: Good signature from"
+
+set pgp_encrypt_sign_command="pgpewrap gpg %?p?--passphrase-fd 0? --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"

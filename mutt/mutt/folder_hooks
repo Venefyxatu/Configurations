@@ -1,0 +1,48 @@
+# Signatures
+folder-hook . set signature="~/.signature.gmail"
+folder-hook imaps://connect.domain.com/INBOX set signature="~/.signature.cereus"
+folder-hook imaps://venefyxatu@imap.gmail.com/Roleplay set signature="~/.signature.gmail.roleplay"
+folder-hook imaps://venefyxatu@imap.gmail.com/ASC set signature="~/.signature.gmail.asc"
+folder-hook imaps://venefyxatu@imap.gmail.com/NUT set signature="~/.signature.gmail.nut"
+
+# Headers
+# #######################################
+#
+# FROM
+folder-hook . my_hdr From: venefyxatu@gmail.com
+folder-hook imaps://connect.domain.com/INBOX my_hdr From: user@domain.com
+folder-hook imaps://venefyxatu@imap.gmail.com/Roleplay my_hdr From: venefyxatu+roleplay@gmail.com
+folder-hook imaps://venefyxatu@imap.gmail.com/ASC my_hdr From: venefyxatu+asc@gmail.com
+folder-hook telenet my_hdr From: user@telenet.be
+
+# REPLY-TO
+folder-hook . my_hdr Reply-to: venefyxatu@gmail.com
+folder-hook imaps://connect.domain.com/INBOX my_hdr Reply-to: user@domain.com
+folder-hook imaps://venefyxatu@imap.gmail.com/Roleplay my_hdr Reply-to: venefyxatu+roleplay@gmail.com
+folder-hook imaps://venefyxatu@imap.gmail.com/python-tutor my_hdr From: venefyxatu+python@gmail.com
+folder-hook imaps://venefyxatu@imap.gmail.com/NUT my_hdr From: venefyxatu+nut@gmail.com
+folder-hook imaps://venefyxatu@imap.gmail.com/ASC my_hdr Reply-to: venefyxatu+asc@gmail.com
+folder-hook telenet my_hdr Reply-to: user@telenet.be
+
+# PGP signatures
+folder-hook imaps://venefyxatu@imap.gmail.com/ set pgp_sign_as="0xC5FE6DEB"
+folder-hook imaps://connect.domain.com/INBOX set pgp_sign_as="0x4045D19B"
+
+# SORTING
+folder-hook . set sort="date"
+folder-hook imaps://venefyxatu@imap.gmail.com/PGP set sort="threads"
+
+# SMTP 
+folder-hook imaps://venefyxatu@imap.gmail.com/ set smtp_url="smtps://venefyxatu@gmail.com@smtp.gmail.com"
+folder-hook imaps://heerener@imap.gmail.com/ set smtp_url="smtps://heerener@gmail.com@smtp.gmail.com"
+folder-hook imaps://connect.domain.com/INBOX set smtp_url="smtp://connect.domain.com"
+
+# Outbox 
+folder-hook imaps://venefyxatu@imap.gmail.com/ set record="imaps://venefyxatu@imap.gmail.com/Sent"
+folder-hook imaps://heerener@imap.gmail.com/ set record="imaps://heerener@imap.gmail.com/Sent"
+folder-hook imaps://connect.domain.com/INBOX set record="=Cereus/outbox"
+
+# Spoolfile
+folder-hook imaps://venefyxatu@imap.gmail.com/ set spoolfile="=imaps://venefyxatu@imap.gmail.com/"
+folder-hook imaps://heerener@imap.gmail.com/ set spoolfile="=imaps://heerener@imap.gmail.com/"
+folder-hook imaps://connect.domain.com/INBOX set spoolfile="=Cereus/"

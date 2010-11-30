@@ -1,0 +1,3 @@
+# Macros to toggle the sidebar visibility
+macro index b '<enter-command>toggle sidebar_visible<enter><refresh>'
+macro pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
