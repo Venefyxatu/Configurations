@@ -1,0 +1,121 @@
+#!/bin/zsh
+
+autoload zmv
+alias mmv='noglob zmv -W'
+
+if ( which sudo >/dev/null 2>/dev/null ) ; then
+#        alias su='export XAUTHORITY=${HOME}/.Xauthority ; sudo -s'
+        alias sudo='export XAUTHORITY=${HOME}/.Xauthority ; sudo'
+fi
+
+# Radio
+
+alias radioklara='mplayer http://mp3.streampower.be/klaracontinuo-mid.mp3'
+alias radio1='mplayer http://mp3.streampower.be/radio1-mid.mp3'
+alias radiogoldies='mplayer http://stream.citygold.be:8004/listen.pls'
+alias radio1nl='mplayer http://shoutcast.omroep.nl:8100/'
+alias radiojoe='mplayer http://streaming.4fm.be/4fm_lo'
+
+# For giggles
+alias mouse="/bin/cat"
+alias dog="/usr/bin/tac"
+
+alias netbeans="AWT_TOOLKIT=MToolkit /opt/netbeans-6.5-python/bin/netbeans"
+alias du="du -hcs"
+alias df="df -h"
+
+alias diffie="svn diff|colordiff|less"
+
+alias ls="ls --color=auto"
+alias la="ls --color=always -a"
+alias ll="ls --color=always -l"
+alias lla="ls --color=always -la"
+alias lal="ls --color=always -la"
+
+alias cp="cp -i"
+
+alias reboot="sudo /sbin/init 6"
+alias halt="sudo /sbin/halt"
+alias bakkes="sudo /sbin/halt"
+
+alias emerge="time sudo -E emerge"
+alias rc-update="sudo /sbin/rc-update"
+alias etc-update="sudo /usr/sbin/etc-update"
+alias revdep-rebuild="sudo /usr/bin/revdep-rebuild"
+alias lspci="sudo /usr/sbin/lspci"
+alias fdisk="sudo /sbin/fdisk"
+alias updatedb="sudo /usr/bin/updatedb"
+alias update-eix="sudo /usr/bin/eix-update"
+alias eix-update="sudo /usr/bin/eix-update"
+
+alias modprobe="sudo /sbin/modprobe"
+alias rmmod="sudo /sbin/rmmod"
+
+alias editmeek="sudo vim /etc/make.conf"
+
+# Networking aliases
+alias tcpdump="sudo /usr/sbin/tcpdump"
+alias route="sudo /sbin/route"
+alias ifconfig="sudo /sbin/ifconfig"
+alias iwlist="sudo /sbin/iwlist"
+alias iwconfig="sudo /sbin/iwconfig"
+alias dhcpcd="sudo /sbin/dhcpcd"
+alias iptables="sudo /sbin/iptables"
+alias showmount="sudo /usr/sbin/showmount"
+alias brctl="sudo /sbin/brctl"
+
+export LANG="en_US.utf8"
+#export LANG="en_UK.ISO_8859_1"
+
+alias rm='rm -i'
+alias esync="sudo /usr/sbin/esync"
+alias grep="grep --colour=auto"
+
+cvi () {
+    vim -O ${${1%.[hc]}%.}.{h,c}
+}
+
+xvi () {
+    vim -O ${${${1%.h}%.cpp}%.}.{h,cpp}
+}
+
+wt() { 
+        while true ; do ( $@ ) ; sleep 1 ; clear ; done
+}
+
+function bdiff() { diff "$1" "$2" || diff <(hex "$1") <(hex "$2") ; }
+
+tohtml() {
+        if test -z $1 ; then
+                echo "tohtml <file>" >&2
+                return 1
+        fi
+        vim -e +:TOhtml +w +qa $1
+}
+
+yyyymmdd () { date +%Y%m%d ; }
+yyyymmdd-hhmmss () { date +%Y%m%d-%H%M%S ; }
+alias ymd=yyyymmdd
+alias ymd-hms=yyyymmdd-hhmmss
+
+function vman() { vim -c ":RMan ${*}" ; }
+function vimgrep () { tmp="$@" ; vim -c "vimgrep $tmp" ; }
+
+function xpwd () { echo $PWD | xclip -i ; xclip -o ; }
+function xcd () { cd `xclip -o` ; }
+
+# ccd x will do cd ../x
+alias cdd="cd `basename \`pwd\``"
+
+#alias vnice="ionice -n7 nice -n20"
+vnice() {
+        if test -z "$1" ; then
+                echo "vnice [ <pid> | <program> ]" >&2
+                return 1
+        elif ( echo "$1" | grep -q '^[0-9]*$' ) ; then
+                ionice -n7 -p $1
+                renice 20 $1
+        else
+                ionice -n7 nice -n20 $@
+        fi
+}
