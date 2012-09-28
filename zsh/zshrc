@@ -20,9 +20,11 @@ for zshrc_snipplet in ~/.zsh.d/S[0-9][0-9]*[^~] ; do
         source $zshrc_snipplet
 done
 
-cat ${HOME}/.irssi/fnotify
-echo "" >| ${HOME}/.irssi/fnotify
+#cat ${HOME}/.irssi/fnotify
+#echo "" >| ${HOME}/.irssi/fnotify
 
-mailstat -s ${HOME}/mail/logs/procmaillog
+#mailstat -s ${HOME}/mail/logs/procmaillog
 
 PATH=$PATH:/sbin
+
+export DISPLAY=":0"
