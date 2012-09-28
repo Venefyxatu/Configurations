@@ -25,8 +25,13 @@ CTAGS="--c++-kinds=+p --fields=+iaS --extra=+q"
 export LUA_PATH="./?.lua;/usr/local/share/lua/5.1/?.lua;/usr/local/share/lua/5.1/?/init.lua;/usr/local/lib/lua/5.1/?.lua;/usr/local/lib/lua/5.1/?/init.lua;/usr/share/lua/5.1/?.lua;/usr/share/lua/5.1/?/init.lua;/usr/share/awesome/lib/?.lua;/usr/share/awesome/lib/awful/?.lua"
 
 export WORKON_HOME=$HOME/.virtualenvs
-export TERM=xterm
-source /usr/bin/virtualenvwrapper_bashrc
+source /usr/bin/virtualenvwrapper.sh
 
-export http_proxy='http://ictextern3:imas2011@proxy.priv.vangenechten.com:8080'
-export https_proxy=$http_proxy
+export PATH="/home/erik/android-sdk-linux/tools:/home/erik/android-sdk-linux/platform-tools:/opt/firefox-4:${PATH}"
+
+export LC_ALL=en_US.utf8
+
+export PATH=${PATH}:/home/erik/android-sdk-linux/platform-tools
+
+#export http_proxy='http://ictextern3:imas2011@proxy.priv.vangenechten.com:8080'
+#export https_proxy='http://ictextern3:imas2011@proxy.priv.vangenechten.com:8080'

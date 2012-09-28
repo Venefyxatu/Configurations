@@ -5,7 +5,7 @@ alias mmv='noglob zmv -W'
 
 if ( which sudo >/dev/null 2>/dev/null ) ; then
 #        alias su='export XAUTHORITY=${HOME}/.Xauthority ; sudo -s'
-        alias sudo='export XAUTHORITY=${HOME}/.Xauthority ; sudo'
+        alias sudo='export XAUTHORITY=${HOME}/.Xauthority ; sudo -p "(sudo) Password: "'
 fi
 
 # Radio
@@ -20,7 +20,7 @@ alias radiojoe='mplayer http://streaming.4fm.be/4fm_lo'
 alias mouse="/bin/cat"
 alias dog="/usr/bin/tac"
 
-alias netbeans="AWT_TOOLKIT=MToolkit /opt/netbeans-6.5-python/bin/netbeans"
+alias ijs="~/Downloads/jre1.6.0_29/bin/java -cp '/home/erik/lib/*' org.mozilla.javascript.tools.shell.Main"
 alias du="du -hcs"
 alias df="df -h"
 
@@ -31,6 +31,7 @@ alias la="ls --color=always -a"
 alias ll="ls --color=always -l"
 alias lla="ls --color=always -la"
 alias lal="ls --color=always -la"
+alias dls="dropbox ls"
 
 alias cp="cp -i"
 
@@ -40,10 +41,11 @@ alias bakkes="sudo /sbin/halt"
 
 alias emerge="time sudo -E emerge"
 alias rc-update="sudo /sbin/rc-update"
-alias etc-update="sudo /usr/sbin/etc-update"
+alias etc-update="sudo -E /usr/sbin/etc-update"
 alias revdep-rebuild="sudo /usr/bin/revdep-rebuild"
 alias lspci="sudo /usr/sbin/lspci"
 alias fdisk="sudo /sbin/fdisk"
+alias parted="sudo /usr/sbin/parted"
 alias updatedb="sudo /usr/bin/updatedb"
 alias update-eix="sudo /usr/bin/eix-update"
 alias eix-update="sudo /usr/bin/eix-update"
@@ -53,10 +55,13 @@ alias rmmod="sudo /sbin/rmmod"
 
 alias editmeek="sudo vim /etc/make.conf"
 
+alias hgoutfiles="hg outgoing -v |grep files: |cut -c 14- |tr ' ' '\n' |sort -u"
+
 # Networking aliases
 alias tcpdump="sudo /usr/sbin/tcpdump"
 alias route="sudo /sbin/route"
 alias ifconfig="sudo /sbin/ifconfig"
+alias ip="sudo /sbin/ip"
 alias iwlist="sudo /sbin/iwlist"
 alias iwconfig="sudo /sbin/iwconfig"
 alias dhcpcd="sudo /sbin/dhcpcd"
@@ -69,7 +74,7 @@ export LANG="en_US.utf8"
 
 alias rm='rm -i'
 alias esync="sudo /usr/sbin/esync"
-alias grep="grep --colour=auto"
+alias grep="grep -n --colour=auto"
 
 cvi () {
     vim -O ${${1%.[hc]}%.}.{h,c}

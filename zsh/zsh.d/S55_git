@@ -120,3 +120,15 @@ get_git_prompt_info() {
         echo -n "${res}"
 }
 
+proxied_git () 
+( 
+    export GIT_PROXY_COMMAND=/tmp/gitproxy;
+
+    cat  > $GIT_PROXY_COMMAND <<EOF
+#!/bin/bash
+/usr/bin/socat - PROXY:proxy.priv.vangenechten.com:\$1:\$2,proxyport=8080
+EOF
+    chmod +x $GIT_PROXY_COMMAND;
+
+    git "$@"
+)
