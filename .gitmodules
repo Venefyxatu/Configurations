@@ -13,3 +13,6 @@
 [submodule "vim/vim/bundle/pydoc.vim"]
 	path = vim/vim/bundle/pydoc.vim
 	url = https://github.com/fs111/pydoc.vim.git
+[submodule "zsh/oh-my-zsh"]
+	path = zsh/oh-my-zsh
+	url = git://github.com/robbyrussell/oh-my-zsh.git
