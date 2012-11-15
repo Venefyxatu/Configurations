@@ -13,7 +13,6 @@ folder-hook . my_hdr From: venefyxatu@gmail.com
 folder-hook imaps://connect.domain.com/INBOX my_hdr From: user@domain.com
 folder-hook imaps://venefyxatu@imap.gmail.com/Roleplay my_hdr From: venefyxatu+roleplay@gmail.com
 folder-hook imaps://venefyxatu@imap.gmail.com/ASC my_hdr From: venefyxatu+asc@gmail.com
-folder-hook telenet my_hdr From: user@telenet.be
 
 # REPLY-TO
 folder-hook . my_hdr Reply-to: venefyxatu@gmail.com
@@ -22,11 +21,6 @@ folder-hook imaps://venefyxatu@imap.gmail.com/Roleplay my_hdr Reply-to: venefyxa
 folder-hook imaps://venefyxatu@imap.gmail.com/python-tutor my_hdr From: venefyxatu+python@gmail.com
 folder-hook imaps://venefyxatu@imap.gmail.com/NUT my_hdr From: venefyxatu+nut@gmail.com
 folder-hook imaps://venefyxatu@imap.gmail.com/ASC my_hdr Reply-to: venefyxatu+asc@gmail.com
-folder-hook telenet my_hdr Reply-to: user@telenet.be
-
-# PGP signatures
-folder-hook imaps://venefyxatu@imap.gmail.com/ set pgp_sign_as="0xC5FE6DEB"
-folder-hook imaps://connect.domain.com/INBOX set pgp_sign_as="0x4045D19B"
 
 # SORTING
 folder-hook . set sort="date"
@@ -40,9 +34,21 @@ folder-hook imaps://connect.domain.com/INBOX set smtp_url="smtp://connect.domain
 # Outbox 
 folder-hook imaps://venefyxatu@imap.gmail.com/ set record="imaps://venefyxatu@imap.gmail.com/Sent"
 folder-hook imaps://heerener@imap.gmail.com/ set record="imaps://heerener@imap.gmail.com/Sent"
-folder-hook imaps://connect.domain.com/INBOX set record="=Cereus/outbox"
+folder-hook imaps://user@server/INBOX 'set record="imaps://user@server/Sent Items"'
 
 # Spoolfile
-folder-hook imaps://venefyxatu@imap.gmail.com/ set spoolfile="=imaps://venefyxatu@imap.gmail.com/"
-folder-hook imaps://heerener@imap.gmail.com/ set spoolfile="=imaps://heerener@imap.gmail.com/"
-folder-hook imaps://connect.domain.com/INBOX set spoolfile="=Cereus/"
+folder-hook imaps://user@server1/ set spoolfile="+INBOX"
+folder-hook imaps://user@server2/ set spoolfile="+INBOX"
+folder-hook imaps://user@server3/ spoolfile="+Inbox"
+
+# Folder
+folder-hook imaps://user@server1/ set folder="imaps://user@server1"
+folder-hook imaps://user@server2/ set folder="imaps://user@server2"
+folder-hook imaps://user@server3/INBOX set folder="imaps://user@server3"
+
+#
+# Drafts
+folder-hook imaps://user@server1/ set postponed="imaps://user@server1/Drafts"
+folder-hook imaps://user@server2/ set postponed="imaps://user@server2/Drafts"
+folder-hook imaps://user@server3/INBOX set postponed="imaps://user@server3/Drafts"
+

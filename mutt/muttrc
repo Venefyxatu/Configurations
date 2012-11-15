@@ -13,17 +13,14 @@ set charset="utf-8"                               # Charset used by the terminal
 set date_format="%a, %b %d, %Y at %H:%M:%S %Z"    # 12-hour clocks suck.
 set edit_headers=yes                              # Show me the headers when editing a message
 set editor="vim"                                  # Use vim for editing messages
-set folder="~/.offlineimap"                       # default mailbox location --> but I don't use offlineimap in this setup
 set forward_quote=yes                             # Indent forwarded messages in the main body.  See also indent_string
 set header_cache="~/.mailcache"                   # Cache headers to prevent downloading them every time.
 set help=no                                       # Don't display help lines on the first line of the screen
 set imap_idle=yes                                 # Use the IMAP IDLE extension.  `man muttrc' if your connection seems to freeze every now and then 
-#set imap_peek=yes                                 # Mark fetched messages as read.  I'm a speed freak.
 set imap_servernoise=no                           # Warnings != errors
 set include=yes                                   # Include the body of messages I'm replying to by default.  I will delete myself if not necessary.
 set mail_check=60                                 # Check for new mail every minute
 set mark_old=no                                   # Don't mark new unread messages as old when closing a mailbox
-set mbox_type=Maildir                             # offlineimap uses Maildir format
 set menu_move_off=no                              # Do not scroll the last entry of a menu off the bottom of a screen (unless there are not enough entries)
 set menu_scroll=no                                # Do not scroll one line at a time when moving off the current screen instead of a page
 set mime_forward=ask-no                           # Give me the option to forward a message as a MIME attachment
@@ -31,14 +28,16 @@ set pager_context=2                               # When moving to the next page
 set pager_stop=yes                                # Do not move to the next message when doing next-page at the end of one message
 set sidebar_visible=yes                           # Show the side bar
 set sidebar_width=30                              # Make it wider than 0
-set spoolfile=+imaps://imap.gmail.com/                       # Where the spoolfile lives
 set certificate_file="~/.mutt/certificates"       # Don't clutter my homedir
-set postponed="~/mail/postponed"                  # Put postponed messages here
 set realname="Erik H."                            # Real name to be used when sending messages
-#set record="~/mail/sent"                          # Where to put sent messages.  Should remain empty due to folder hooks
+set record=""                                     # Where to put sent messages.  Should remain empty due to folder hooks
 set reply_regexp="^(re([\[0-9\]+])*|betr):[ \t]*" # The reply regexp: I get more Dutch mails than German ones
 set reply_to=yes                                  # Use the reply-to field for what it's for
 set tilde=yes                                     # Do the vim thing with tildes
+set copy=yes                                      # Save sent messages
+set folder="imaps://user@server1"
+set spoolfile='+INBOX'
+
 
 # Don't show ALL headers, just the most interesting ones
 ignore *
