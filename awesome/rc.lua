@@ -7,6 +7,7 @@ require("beautiful")
 -- Notification library
 require("naughty")
 require("shifty")
+require("revelation")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
@@ -56,43 +57,46 @@ layouts =
 
 shifty.config.tags = {
    ["recording"] = { position = 10, layout = awful.layout.suit.floating      },
-   ["social"] = { position = 20, layout = awful.layout.suit.magnifier, nopopup = true },
+   ["2:social"] = { position = 2, layout = awful.layout.suit.tile, nopopup = true, mwfact = 0.30, screen = math.min(screen.count(), 1), spawn = "/usr/bin/skype" },
    ["myterm"] = { layout = awful.layout.suit.max, nopopup = true, init = false },
-   ["term"] = { exclusive = true, position = 30, layout = awful.layout.suit.tile.bottom, mwfact = 0.75},
-   ["www"] = { exclusive = true, position = 40, spawn = "opera-11", nopopup = true, layout=awful.layout.suit.max },
-   ["vmachines"] = { position = 50, layout = awful.layout.suit.max, nopopup = true,                   },
-   ["work"] = { position = 60, leave_kills = true, layout = awful.layout.suit.max },
-   ["office"] = { position = 70, layout = awful.layout.suit.max, nopopup = true },
-   ["dashboard"] = { layout = awful.layout.suit.max, nopopup = true, position = 6 },
+   ["3:term"] = { exclusive = true, position = 3, layout = awful.layout.suit.tile.bottom, mwfact = 0.75, persist = true, screen = math.max(screen.count(), 2) },
+   ["5:vmachines"] = { position = 5, layout = awful.layout.suit.max, nopopup = true,                   },
+   ["6:ERP"] = { position = 6, leave_kills = true, layout = awful.layout.suit.max },
+   ["7:office"] = { position = 7, layout = awful.layout.suit.max, nopopup = true },
+   ["9:www"] = { exclusive = true, position = 9, spawn = "/usr/bin/firefox", nopopup = true, layout=awful.layout.suit.max, persist = true, screen = math.max(screen.count(), 2) },
+   ["4:work"] = {position = 4, layout = awful.layout.suit.tile.left, mwfact = 0.70, nopopup = true },
+   ["dashboard"] = { layout = awful.layout.suit.max, nopopup = true, position = 20 },
    ["design"] = { layout = awful.layout.suit.floating, mwfact = 0.18, nopopup = true },
-   ["development"] = { layout = awful.layout.suit.max, nopopup = true},
-   ["rdesktop"] = { layout = awful.layout.suit.floating, exclusive = true, max_clients = 1,                    },
+   ["development"] = { layout = awful.layout.suit.max },
+   ["8:Remote Desktop"] = { layout = awful.layout.suit.floating, exclusive = true, },
    ["sys"] = { layout = awful.layout.suit.fair.horizontal, exclusive = true,                },
    ["music"] = { layout = awful.layout.suit.tile, nopopup = false},
    ["df"] = { layout = awful.layout.suit.max, nopopup = true,                   },
    ["astronomy"] = { layout = awful.layout.suit.max, nopopup = true, },
+   ["minecraft"] = { layout = awful.layout.suit.max, nopopup = true, },
 }
 
 shifty.config.apps = {
         { match = {"htop", ".*dzen.*", "Xfe.*"               }, tag = "sys"                                                     },
         { match = {"Conky"                                   }, tag = "dashboard"                                               },
-        { match = {".*mutt.*", "offlineimap", ".*Skype.*", ".*Buddy List.*"    }, tag = "social",                               },
-        { match = {".*VirtualBox.*"                          }, tag = "vmachines", nopopup = true                               },
+        { match = {".*mutt.*", "offlineimap", ".*Skype.*", ".*Buddy List.*"    }, tag = "2:social",                               },
+        { match = {".*VirtualBox.*"                          }, tag = "5:vmachines", nopopup = true                               },
         { match = {".*XVidCap.*", "avidemux.*"               }, tag = "recording", nopopup = true                               },
-        { match = {".*Opera.*", "Firefox.*"                  }, tag = "www", nopopup = true                                     },
+        { match = {".*Opera.*", "Firefox.*", ".*Google Chrome.*"}, tag = { "9:www", "4:work" }, nopopup = true                                     },
         { match = {".*Terminator"                            }, tag = "myterm", nopopup = false                                 },
-        { match = {"xterm", 'urxvt'          }, tag = "term", nopopup = false                                                   },
+        { match = {"xterm", 'urxvt'                          }, tag = { "3:term", "4:work" }, nopopup = false,                    },
         { match = {"Gimp", "^dia$", "Layers, Channels", "Toolbox", "GNU Image" }, tag = "design", nopopup = true                },
         { match = {"gimp-image-window"                       }, slave = true,                                                   },
         { match = {"gqview"                                  }, tag = { "graph", "gqview" }                                     },
-        { match = {".*OpenOffice.*", "Document Viewer", ".*gedit", ".*pdf", "zim", "evince", "XMind" }, tag = "office"          },
-        { match = {".*wing.*", "Eclipse", "Workspace Launcher", "Giggle", "pgAdmin", "MySQL Query.*" }, tag = "development", nopopup = true },
-        { match = {"rdesktop", "Xnest"                       }, tag = "rdesktop"                                                },
+        { match = {".*OpenOffice.*", "Document Viewer", ".*gedit", "(!Opening).*pdf", "zim", "evince", "XMind" }, tag = "7:office"          },
+        { match = {".*wing.*", "Eclipse", "Workspace Launcher", "Giggle", "pgAdmin", "MySQL Query.*", "Perforce P4Merge" }, tag = "development" },
+        { match = {"rdesktop", "Xnest", "Remmina", class= "remmina" }, tag = "8:Remote Desktop"                                                },
         { match = {"herrie", "alsamixer", "Picard"           }, tag = "music", nopopup = false                                  },
         { match = {"MPlayer", "xmag",                        }, float = true,                                                   },
         { match = {"Dwarf Fortress",                         }, tag = "df", nopopup = true                                      },
-        { match = {"^OpenERP.*",                             }, tag = "work", nopopup = true                                    },
+        { match = {"^OpenERP.*",                             }, tag = "6:ERP", nopopup = true                                    },
         { match = {"^GPREDICT.*",                            }, tag = "astronomy", nopopup = true                               },
+        { match = {"^Minecraft Structure Planner.*",         }, tag = "minecraft", nopopup = true                               },
         { match = { "" }, buttons = {
                              button({ }, 1, function (c) client.focus = c; c:raise() end),
                              button({ modkey }, 1, function (c) awful.mouse.client.move() end),
@@ -107,13 +111,6 @@ shifty.config.defaults = {
   floatBars=false,
   guess_name=true,
   guess_position=true,
-  run = function(tag) 
-    local stitle = "Shifty Created: "
-    stitle = stitle .. (awful.tag.getproperty(tag,"position") or shifty.tag2index(mouse.screen,tag))
-    stitle = stitle .. " : "..tag.name
-    stitle = stitle .. " on screen " .. mouse.screen
-    naughty.notify({ text = stitle, screen = mouse.screen })
-  end,
 }
 
 shifty.config.match_screen_dependent = true
@@ -131,6 +128,33 @@ for s = 1, screen.count() do
 end
 -- }}}
 --]]
+
+
+do
+    local fbyidx = awful.client.focus.byidx
+    awful.client.focus.byidx = function (i)
+        fbyidx(i)
+        local g = client.focus:geometry()
+        g.x = g.x + g.width / 2
+        g.y = g.y + g.height / 2
+        mouse.coords(g)
+    end
+end
+-- See https://gist.github.com/3302700
+do -- Change focus_relative to put the mouse in a sane place.
+    local frel = awful.screen.focus_relative
+    awful.screen.focus_relative = function (i)
+        frel(i)
+        if client.focus and client.focus.screen == mouse.screen then
+            local g = client.focus:geometry()
+            g.x = g.x + g.width/2
+            g.y = g.y + g.height/2
+            mouse.coords(g)
+        end
+    end
+end
+
+
 --
 -- {{{ Menu
 -- Create a laucher widget and a main menu
@@ -221,9 +245,10 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
+mystatusbar = awful.wibox({ position = "bottom", screen = 1, ontop = false, width = 1, height = 16 })
+
 for s = 1, screen.count() do
     -- Create dummy bar to reserve space for Conky
-    mystatusbar = awful.wibox({ position = "bottom", screen = s, ontop = false, width = 1, height = 16 })
     -- Create a promptbox for each screen
     mypromptbox[s] = awful.widget.prompt({ layout = awful.widget.layout.horizontal.leftright })
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
@@ -277,9 +302,12 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey, "Control" }, "h",      awful.tag.viewnone       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
+    awful.key({ modkey,           }, "e", revelation),
     awful.key({modkey, "Shift"}, "d", shifty.del), -- delete a tag
-    awful.key({modkey, "Shift"}, "n", shifty.send_prev), -- client to prev tag
-    awful.key({modkey, "Shift"}, "p", shifty.send_next), -- client to next tag
+    awful.key({modkey, "Shift"}, "n", shifty.send_next), -- client to next tag
+    awful.key({modkey, "Shift"}, "p", shifty.send_prev), -- client to prev tag
+    awful.key({modkey, "Control"}, "n", shifty.copy_next), -- client to next tag
+    awful.key({modkey, "Control"}, "p", shifty.copy_prev), -- client to prev tag
     awful.key({modkey, "Shift"},
               "o",
               function()
@@ -289,6 +317,16 @@ globalkeys = awful.util.table.join(
                   t = shifty.tagtoscr(s, t)
                   awful.tag.viewonly(t)
                   awful.screen.focus(s)
+              end),
+    awful.key({modkey, "Shift"}, "m", 
+              function()
+                  awful.prompt.run({ prompt = "New tag position: " },
+                  mypromptbox[mouse.screen].widget,
+                  function (s)
+                      local t = awful.tag.selected()
+                      awful.tag.move(s, t)
+                  end,
+                  nil)
               end),
     awful.key({modkey}, "a", shifty.add), -- creat a new tag
     awful.key({modkey, "Shift"}, "r", shifty.rename), -- rename a tag
@@ -378,6 +416,17 @@ globalkeys = awful.util.table.join(
                 awful.util.spawn_with_shell("exe=`cat /home/erik/.dmenu/menu | dmenu -i -nb '#091030' -nf '#138EA1' -sb '#0C2245' -sf '#03DBFC'` && exec ${exe}")
             end),
 
+    awful.key({ modkey }, "F10",
+            function ()
+                awful.util.spawn(pure_terminal .. ' -e tmuxinator start tunnel')
+                awful.util.spawn(pure_terminal .. ' -e tmuxinator start dacentec')
+            end),
+
+    awful.key({modkey}, "v", 
+        function ()
+            awful.util.spawn_with_shell("/usr/bin/xclip -o -selection clipboard |xclip")
+        end),
+
    awful.key({ modkey             }, "F12",    function () awful.util.spawn("slock") end)
 )
 
@@ -405,56 +454,40 @@ for s = 1, screen.count() do
    keynumber = math.min(9, math.max(#tags[s], keynumber));
 end
 
--- Bind all key numbers to tags.
--- Be careful: we use keycodes to make it works on any keyboard layout.
--- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, keynumber do
+for i=1,9 do
+    globalkeys = awful.util.table.join(
+                        globalkeys,
+                        awful.key({modkey}, i,
+                            function()
+                                awful.tag.viewonly(shifty.getpos(i))
+                            end))
+    globalkeys = awful.util.table.join(
+                        globalkeys,
+                        awful.key({modkey, "Control"}, i,
+                            function ()
+                                local t = shifty.getpos(i)
+                                t.selected = not t.selected
+                            end))
     globalkeys = awful.util.table.join(globalkeys,
-        --[[
-        awful.key({ modkey }, "#" .. 10,
-            function () 
-                awful.tag.viewonly(shifty.config.tags['term'])
-            end
-        end),--]]
-        --[[awful.key({ modkey }, "#" .. i + 9,
-                  function ()
-                        local screen = mouse.screen
-                        if tags[screen][i] then
-                            awful.tag.viewonly(tags[screen][i])
-                        end
-                  end),
-        awful.key({ modkey, "Control" }, "#" .. i + 9,
-                  function ()
-                      local screen = mouse.screen
-                      if tags[screen][i] then
-                          awful.tag.viewtoggle(tags[screen][i])
-                      end
-                  end),
-        awful.key({ modkey, "Shift" }, "#" .. i + 9,
-                  function ()
-                      if client.focus and tags[client.focus.screen][i] then
-                          awful.client.movetotag(tags[client.focus.screen][i])
-                      end
-                  end),
-                  --]]
-        --[[awful.key({ modkey,         }, "4",
+                                awful.key({modkey, "Control", "Shift"}, i,
                 function ()
-                    awful.util.spawn_with_shell("scrot -s")
-                end),--]]
-
-        awful.key({ modkey, "Shift" }, "F11",
-                function ()
-                    awful.util.spawn("awsetbg -r /home/erik/Pictures/rotation_wallpapers/")
-                end),
-
-        awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
-                  function ()
-                      if client.focus and tags[client.focus.screen][i] then
-                          awful.client.toggletag(tags[client.focus.screen][i])
-                      end
-                  end))
-                  
+                    if client.focus then
+                        awful.client.toggletag(shifty.getpos(i))
+                    end
+                end))
+    -- move clients to other tags
+    globalkeys = awful.util.table.join(
+                    globalkeys,
+                    awful.key({modkey, "Shift"}, i,
+                        function ()
+                            if client.focus then
+                                local t = shifty.getpos(i)
+                                awful.client.movetotag(t)
+                                awful.tag.viewonly(t)
+                            end
+                        end))
 end
+
 
 
 clientbuttons = awful.util.table.join(
@@ -482,6 +515,8 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
+    { rule = { name = ".*- Skype.*Chat" }, properties = {}, callback = awful.client.setslave },
+    { rule = { class = "URxvt", tag="4:work" }, properties = { }, callback = awful.titlebar.add },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
