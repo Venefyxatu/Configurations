@@ -28,3 +28,6 @@
 [submodule "vim/vim/bundle/minibufexpl.vim"]
 	path = vim/vim/bundle/minibufexpl.vim
 	url = git://github.com/fholgado/minibufexpl.vim.git
+[submodule "vim/vim/bundle/python-mode"]
+	path = vim/vim/bundle/python-mode
+	url = git://github.com/klen/python-mode.git
