@@ -34,3 +34,6 @@
 [submodule "vim/vim/bundle/taglist.vim"]
 	path = vim/vim/bundle/taglist.vim
 	url = git://github.com/vim-scripts/taglist.vim.git
+[submodule "vim/vim/bundle/yankring.vim"]
+	path = vim/vim/bundle/yankring.vim
+	url = git://github.com/vim-scripts/YankRing.vim.git
