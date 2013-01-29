@@ -31,3 +31,6 @@
 [submodule "vim/vim/bundle/python-mode"]
 	path = vim/vim/bundle/python-mode
 	url = git://github.com/klen/python-mode.git
+[submodule "vim/vim/bundle/taglist.vim"]
+	path = vim/vim/bundle/taglist.vim
+	url = git://github.com/vim-scripts/taglist.vim.git
