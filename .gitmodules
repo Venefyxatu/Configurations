@@ -19,3 +19,6 @@
 [submodule "vim/vim/bundle/vim-markdown"]
 	path = vim/vim/bundle/vim-markdown
 	url = git://github.com/hallison/vim-markdown.git
+[submodule "vim/vim/bundle/supertab"]
+	path = vim/vim/bundle/supertab
+	url = git://github.com/ervandew/supertab.git
