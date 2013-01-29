@@ -123,7 +123,9 @@ let &guicursor = &guicursor . ",a:blinkon0"
 autocmd BufRead,BufNewFile *.py,*.rscript syntax on set ft=python
 autocmd BufRead,BufNewFile *.py,*.rscript set ai
 autocmd BufRead,BufNewFile *.rscript,*.py,*sh set tabstop=4 expandtab shiftwidth=4
-autocmd BufRead,BufNewFile *.lua set tabstop=2 expandtab shiftwidth=2 
+autocmd BufRead,BufNewFile *.lua,*.rb set tabstop=2 expandtab shiftwidth=2 
+autocmd BufRead,BufNewFile *.rb syntax on set ft=ruby
+autocmd BufRead,BufNewFile *.rb set ai
 
 noremap <silent> <F6> :PyLintToggle<CR>
 noremap <silent> <F7> :NERDTreeToggle<CR>
@@ -180,3 +182,10 @@ set tw=0
 
 let g:ctrlp_map = '<c-f>'
 
+
+let pymode_rope_vim_completion=1
+let pymode_rope_extended_complete=1
+
+nnoremap <F5> :w<CR> :silent make<CR>
+inoremap <F5> <Esc>:w<CR>:silent make<CR>
+vnoremap <F5> :<C-U>:w<CR>:silent make<CR
