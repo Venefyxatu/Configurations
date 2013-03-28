@@ -23,7 +23,7 @@ ZSH_THEME="venefyxatu"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
@@ -43,6 +43,30 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.utf8
 export LC_CTYPE=en_US.utf8
 export EDITOR=vim
+
+################################################################################
+# virtualenv
+################################################################################
+
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
+
+################################################################################
+# completion
+################################################################################
+
+zstyle ':completion:*:*:kill:*'    menu yes select
+zstyle ':completion:*:kill:*'      force-list always
+
+zstyle ':completion:*:*:killall:*' menu yes select
+zstyle ':completion:*:killall:*'   force-list always
+
+zstyle ':completion:*:processes' command 'ps x -o pid,pcpu,tt,cmd'
+#zstyle ':completion:*:processes' command 'ps -au$USER -o pid,time,cmd|grep -v "ps -au$USER -o pid,time,cmd"'
+#zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)[ 0-9:]#([^ ]#)*=01;30=01;31=01;38'
+
+#
+unset RUBYOPT
 
 ################################################################################
 #   ALIASES
@@ -111,9 +135,7 @@ alias dhcpcd="sudo /sbin/dhcpcd"
 alias iptables="sudo /sbin/iptables"
 alias showmount="sudo /usr/sbin/showmount"
 alias brctl="sudo /sbin/brctl"
-
-export LANG="en_US.utf8"
-#export LANG="en_UK.ISO_8859_1"
+alias mtr="sudo /usr/sbin/mtr -t"
 
 alias rm='rm -i'
 alias esync="sudo /usr/sbin/esync"
@@ -283,3 +305,6 @@ zle -N down-line-or-beginning-search down-line-or-beginning-search
 
 bindkey "^[[A" up-line-or-beginning-search          # up
 bindkey "^[[B" down-line-or-beginning-search        # down
+
+PATH=/home/erik/android-sdk-linux/tools/:/home/erik/android-sdk-linux/platform-tools/:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+source $HOME/.rvm/scripts/rvm
