@@ -1,0 +1,9 @@
+[user]
+	name = Erik Heeren
+	email = venefyxatu+git@gmail.com
+
+[color]
+	diff = always
+
+[alias]
+    glog = log --graph --all --decorate
