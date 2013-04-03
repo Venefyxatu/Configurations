@@ -42,7 +42,7 @@ URxvt.internalBorder: 0
 
 # Make URLs yankable - way cooler than clickable
 urxvt*perl-ext:   default,url-select,clipboard,keyboard-select
-urxvt*keysym.M-u: perl:url-select:select_next
+urxvt*keysym.M-j: perl:url-select:select_next
 urxvt*keysym.M-Escape: perl:keyboard-select:activate
 urxvt*url-select.launcher: /usr/bin/firefox  
 urxvt*url-select.underline: true
