@@ -48,7 +48,7 @@ export EDITOR=vim
 # virtualenv
 ################################################################################
 
-export WORKON_HOME=$HOME/.virtualenvs
+export WORKON_HOME=$HOME/.virtualenv_home
 source /usr/bin/virtualenvwrapper.sh
 
 ################################################################################
