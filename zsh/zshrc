@@ -141,6 +141,10 @@ alias rm='rm -i'
 alias esync="sudo /usr/sbin/esync"
 alias grep="grep -n --colour=auto"
 
+# Development aliases
+# Test inventory with coverage and open HTML page
+alias cov='coverage run --source="." manage.py test webapp && coverage html && firefox htmlcov/index.html'
+
 ################################################################################
 #   END ALIASES
 ################################################################################
@@ -307,4 +311,3 @@ bindkey "^[[A" up-line-or-beginning-search          # up
 bindkey "^[[B" down-line-or-beginning-search        # down
 
 PATH=/home/erik/android-sdk-linux/tools/:/home/erik/android-sdk-linux/platform-tools/:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-source $HOME/.rvm/scripts/rvm
