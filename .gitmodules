@@ -37,3 +37,6 @@
 [submodule "vim/vim/bundle/yankring.vim"]
 	path = vim/vim/bundle/yankring.vim
 	url = git://github.com/vim-scripts/YankRing.vim.git
+[submodule "vim/vim/bundle/ack.vim"]
+	path = vim/vim/bundle/ack.vim
+	url = https://github.com/mileszs/ack.vim.git
