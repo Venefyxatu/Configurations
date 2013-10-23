@@ -9,9 +9,14 @@ ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="nicoulaj"
 ZSH_THEME="venefyxatu"
 
+alias mkvirtulenv='mkvirtualenv --no-site-packages'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+if [ -f /etc/lsb-release ]
+then
+    alias ack="/usr/bin/ack-grep"
+fi
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -49,7 +54,12 @@ export EDITOR=vim
 ################################################################################
 
 export WORKON_HOME=$HOME/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
+if [ -f /etc/lsb-release ]
+then
+    source /usr/local/bin/virtualenvwrapper.sh
+else
+    source /usr/bin/virtualenvwrapper.sh
+fi
 
 ################################################################################
 # completion
@@ -302,12 +312,19 @@ setopt no_xtrace            # do not debug by default
 setopt zle                  # use zsh le
 
 
-autoload -Uz up-line-or-beginning-search
-autoload -Uz down-line-or-beginning-search
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search up-line-or-beginning-search
 zle -N down-line-or-beginning-search down-line-or-beginning-search
-
-bindkey "^[[A" up-line-or-beginning-search          # up
-bindkey "^[[B" down-line-or-beginning-search        # down
+if [ -f /etc/lsb-release ]
+then
+    bindkey '\eOA' up-line-or-beginning-search
+    bindkey '\e[A' up-line-or-beginning-search
+    bindkey '\eOB' down-line-or-beginning-search
+    bindkey '\e[B' down-line-or-beginning-search
+else
+    bindkey "^[[A" up-line-or-beginning-search          # up
+    bindkey "^[[B" down-line-or-beginning-search        # down
+fi
 
 PATH=/home/erik/android-sdk-linux/tools/:/home/erik/android-sdk-linux/platform-tools/:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
