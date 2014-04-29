@@ -1,0 +1,202 @@
+[
+  {
+    "target": [
+      "servers.beelzebub.cpu.total.iowait",
+      "servers.beelzebub.cpu.total.system",
+      "servers.beelzebub.cpu.total.user",
+      "servers.beelzebub.cpu.total.idle"
+    ],
+    "title": "Beelzebub CPU"
+  },
+  {
+    "target": [
+      "servers.beelzebub.memory.MemTotal",
+      "servers.beelzebub.memory.MemFree"
+    ],
+    "title": "Beelzebub RAM"
+  },
+  {
+    "yMin": "0",
+    "target": [
+      "servers.beelzebub.memory.SwapTotal",
+      "servers.beelzebub.memory.SwapFree"
+    ],
+    "title": "Beelzebub Swap"
+  },
+  {
+    "target": [
+      "servers.beelzebub.loadavg.15",
+      "servers.beelzebub.loadavg.05",
+      "servers.beelzebub.loadavg.01"
+    ],
+    "title": "Beelzebub Load Average"
+  },
+  {
+    "title": "Beelzebub % free on /",
+    "yMin": "0",
+    "target": [
+      "servers.beelzebub.diskspace.root.byte_percentfree"
+    ],
+    "yMax": "100"
+  },
+  {
+    "target": [
+      "servers.droopy.cpu.total.iowait",
+      "servers.droopy.cpu.total.system",
+      "servers.droopy.cpu.total.user",
+      "servers.droopy.cpu.total.idle"
+    ],
+    "title": "Droepie CPU"
+  },
+  {
+    "target": [
+      "servers.droopy.memory.MemTotal",
+      "servers.droopy.memory.MemFree"
+    ],
+    "title": "Droepie RAM"
+  },
+  {
+    "yMin": "0",
+    "target": [
+      "servers.droopy.memory.SwapTotal",
+      "servers.droopy.memory.SwapFree"
+    ],
+    "title": "Droepie Swap"
+  },
+  {
+    "target": [
+      "servers.droopy.loadavg.15",
+      "servers.droopy.loadavg.05",
+      "servers.droopy.loadavg.01"
+    ],
+    "title": "Droepie Load Average"
+  },
+  {
+    "title": "Droepie % free on /",
+    "yMin": "0",
+    "target": [
+      "servers.droopy.diskspace.root.byte_percentfree"
+    ],
+    "yMax": "100"
+  },
+  {
+    "target": [
+      "servers.gibber.cpu.total.iowait",
+      "servers.gibber.cpu.total.system",
+      "servers.gibber.cpu.total.user",
+      "servers.gibber.cpu.total.idle"
+    ],
+    "title": "Gibber CPU"
+  },
+  {
+    "target": [
+      "servers.gibber.memory.MemTotal",
+      "servers.gibber.memory.MemFree"
+    ],
+    "title": "Gibber RAM"
+  },
+  {
+    "yMin": "0",
+    "target": [
+      "servers.gibber.memory.SwapTotal",
+      "servers.gibber.memory.SwapFree"
+    ],
+    "title": "Gibber Swap"
+  },
+  {
+    "target": [
+      "servers.gibber.loadavg.15",
+      "servers.gibber.loadavg.05",
+      "servers.gibber.loadavg.01"
+    ],
+    "title": "Gibber Load Average"
+  },
+  {
+    "title": "Gibber % free on /",
+    "yMin": "0",
+    "target": [
+      "servers.gibber.diskspace.root.byte_percentfree"
+    ],
+    "yMax": "100"
+  },
+  {
+    "target": [
+      "servers.git.cpu.total.iowait",
+      "servers.git.cpu.total.system",
+      "servers.git.cpu.total.user",
+      "servers.git.cpu.total.idle"
+    ],
+    "title": "Git CPU"
+  },
+  {
+    "target": [
+      "servers.git.memory.MemTotal",
+      "servers.git.memory.MemFree"
+    ],
+    "title": "Git RAM"
+  },
+  {
+    "yMin": "0",
+    "target": [
+      "servers.git.memory.SwapTotal",
+      "servers.git.memory.SwapFree"
+    ],
+    "title": "Git Swap"
+  },
+  {
+    "target": [
+      "servers.git.loadavg.15",
+      "servers.git.loadavg.05",
+      "servers.git.loadavg.01"
+    ],
+    "title": "Git Load Average"
+  },
+  {
+    "title": "Git % free on /",
+    "yMin": "0",
+    "target": [
+      "servers.git.diskspace.root.byte_percentfree"
+    ],
+    "yMax": "100"
+  },
+  {
+    "target": [
+      "servers.networkservices.cpu.total.iowait",
+      "servers.networkservices.cpu.total.system",
+      "servers.networkservices.cpu.total.user",
+      "servers.networkservices.cpu.total.idle"
+    ],
+    "title": "Networkservices CPU"
+  },
+  {
+    "target": [
+      "servers.networkservices.memory.MemTotal",
+      "servers.networkservices.memory.MemFree"
+    ],
+    "title": "Networkservices RAM"
+  },
+  {
+    "yMin": "0",
+    "target": [
+      "servers.networkservices.memory.SwapTotal",
+      "servers.networkservices.memory.SwapFree"
+    ],
+    "title": "Networkservices Swap"
+  },
+  {
+    "target": [
+      "servers.networkservices.loadavg.15",
+      "servers.networkservices.loadavg.05",
+      "servers.networkservices.loadavg.01"
+    ],
+    "title": "Networkservices Load Average"
+  },
+  {
+    "title": "Networkservices % free on /",
+    "yMin": "0",
+    "target": [
+      "servers.networkservices.diskspace.root.byte_percentfree"
+    ],
+    "yMax": "100"
+  }
+]
