@@ -11,9 +11,6 @@
     unpushed = log @{u}.. --pretty=format:'%h %an %s'
     all-unpushed = log --all --not --remotes --tags --pretty=format:'[%d] %h %an %s'
 
-[push]
-	default = simple
-
 [diff]
     renames = true
 	external = /home/erik/git-diff-wrapper.sh
