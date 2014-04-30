@@ -129,6 +129,7 @@ alias eix-update="sudo /usr/bin/eix-update"
 
 alias modprobe="sudo /sbin/modprobe"
 alias rmmod="sudo /sbin/rmmod"
+alias less="/usr/bin/less -R"
 
 alias editmeek="sudo vim /etc/make.conf"
 
@@ -327,4 +328,4 @@ else
     bindkey "^[[B" down-line-or-beginning-search        # down
 fi
 
-PATH=/home/erik/android-sdk-linux/tools/:/home/erik/android-sdk-linux/platform-tools/:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=~/bin:/opt/vagrant/embedded/bin/:/opt/p4v/bin:/home/erik/android-sdk-linux/tools/:/home/erik/android-sdk-linux/platform-tools/:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
