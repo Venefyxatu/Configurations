@@ -18,6 +18,7 @@ set expandtab
 set noerrorbells
 set number
 set nobackup
+set hlsearch
 let NERDTreeWinSize=46
 let mapleader="\\"
 
@@ -129,7 +130,7 @@ noremap <silent> <F7> :NERDTreeToggle<CR>
 nnoremap <silent> <F8> :TlistToggle<CR>
 
 noremap <silent> <F9> :TMiniBufExplorer<CR>
-noremap <silent> <F10> :cal VimCommanderToggle()<CR>
+nnoremap <silent> <F10> :set ft=xml<CR>:%s/\(<[^\/].\{-}>\)/\r\1/g<CR>:%s/\(<\/.\{-}>\)\(<\/\)/>\1\r\2/g<CR>:g/^$/d<CR>vG=
 nnoremap <silent> <F11> :YRShow<CR>
 
 function GetYRElem(nr)
@@ -195,3 +196,6 @@ noremap <F2> :w<CR> :!python ~/ABC/dacentec/source/clouddesktop-appcatalog/scrip
 let g:pymode_folding = 1
 let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
 let g:pymode_lint_ignore = ""
+
+let Tlist_Show_One_File=1
+let Tlist_WinWidth=55
