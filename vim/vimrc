@@ -7,6 +7,7 @@ syntax enable
 set background=dark
 colorscheme solarized
 
+set hlsearch
 set cursorline
 set tw=0
 set nocompatible
