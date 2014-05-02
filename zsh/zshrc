@@ -54,12 +54,17 @@ export EDITOR=vim
 ################################################################################
 
 export WORKON_HOME=$HOME/.virtualenvs
-if [ -f /etc/lsb-release ]
-then
-    source /usr/local/bin/virtualenvwrapper.sh
-else
-    source /usr/bin/virtualenvwrapper.sh
-fi
+
+POTENTIAL_VIRTUALENVWRAPPER_SCRIPTS="/usr/local/bin/virtualenvwrapper.sh /usr/bin/virtualenvwrapper.sh /etc/bash_completion.d/virtualenvwrapper"
+
+for venv_script in POTENTIAL_VIRTUALENVWRAPPER_SCRIPTS
+do
+    if [ -e $venv_script ]
+    then
+        source $venv_script
+        break
+    fi
+done
 
 ################################################################################
 # completion
