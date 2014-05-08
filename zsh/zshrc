@@ -207,7 +207,7 @@ setopt no_csh_null_glob     # don't erase not matched globs silently
 #
 #[ d-g ]########################################################################
 setopt no_dvorak            # use only regular (qw|az)erty
-setopt emacs                # use rather bindkeys that builtin
+setopt vi                   # use vi mode
 setopt equals               # perform = file expansions
 setopt no_err_exit          # don't weant to see exit status even if nonzero
 setopt no_err_return        # no return from a function with non 0 ending cmds
@@ -327,5 +327,7 @@ else
     bindkey "^[[A" up-line-or-beginning-search          # up
     bindkey "^[[B" down-line-or-beginning-search        # down
 fi
+
+bindkey -M vicmd '?' history-incremental-search-backward
 
 PATH=~/bin:/opt/vagrant/embedded/bin/:/opt/p4v/bin:/home/erik/android-sdk-linux/tools/:/home/erik/android-sdk-linux/platform-tools/:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
