@@ -55,9 +55,9 @@ export EDITOR=vim
 
 export WORKON_HOME=$HOME/.virtualenvs
 
-POTENTIAL_VIRTUALENVWRAPPER_SCRIPTS="/usr/local/bin/virtualenvwrapper.sh /usr/bin/virtualenvwrapper.sh /etc/bash_completion.d/virtualenvwrapper"
+POTENTIAL_VIRTUALENVWRAPPER_SCRIPTS=""
 
-for venv_script in POTENTIAL_VIRTUALENVWRAPPER_SCRIPTS
+for venv_script in /usr/local/bin/virtualenvwrapper.sh /usr/bin/virtualenvwrapper.sh /etc/bash_completion.d/virtualenvwrapper
 do
     if [ -e $venv_script ]
     then
