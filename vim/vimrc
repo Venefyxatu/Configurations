@@ -24,10 +24,10 @@ let NERDTreeWinSize=46
 let mapleader="\\"
 
 if version >= 703
-   map <Leader>n :if &number <Bar>
-               \set relativenumber <Bar>
+   map <Leader>n :if &relativenumber <Bar>
+               \set norelativenumber <Bar>
                \else <Bar>
-               \set number <Bar>
+               \set relativenumber <Bar>
                \endif <cr>
 endif
 set ruler
