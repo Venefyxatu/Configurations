@@ -21,6 +21,8 @@ set number
 set nobackup
 set hlsearch
 let NERDTreeWinSize=46
+let NERDTreeIgnore = ['\.pyc$']
+
 let mapleader="\\"
 
 if version >= 703
