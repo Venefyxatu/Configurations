@@ -336,3 +336,8 @@ fi
 bindkey -M vicmd '?' history-incremental-search-backward
 
 PATH=~/bin:/opt/vagrant/embedded/bin/:/opt/p4v/bin:/home/erik/android-sdk-linux/tools/:/home/erik/android-sdk-linux/platform-tools/:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+if [ -e ~/.rvm/scripts/rvm ]
+then
+    source ~/.rvm/scripts/rvm
+fi
