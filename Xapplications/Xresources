@@ -11,8 +11,8 @@
 !URxvt*font: xft:Terminal:size=10
 !*font: xft:Times New Roman:size=10
 
-#*.foreground: white
-#*.background: black
+!*.foreground: white
+!*.background: black
 XTerm*allowSendEvents: true
 XTerm*internalBorder:  0
 XTerm*borderColor:     black
