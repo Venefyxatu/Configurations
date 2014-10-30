@@ -559,8 +559,10 @@ shifty.init()
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
+os.execute("xrdb -merge ~/.Xresources")
 os.execute("runonce.sh conky &")
-os.execute("runonce.sh dropbox &")
 os.execute("xcompmgr -D 4 -c -C -f -n &")
+os.execute("xmodmap ~/.Xmodmap")
+-- os.execute("runonce.sh dropbox &")
 
 -- }}}
