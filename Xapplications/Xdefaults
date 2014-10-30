@@ -1,5 +1,5 @@
-!URxvt*font: xft:Terminus:size=12
-URxvt*font: xft:Terminus for Powerline:size=12
+URxvt*font: xft:Terminus:size=12
+!URxvt*font: xft:Terminus for Powerline:size=12
 
 URxvt.iconFile: /usr/share/icons/hicolor/16x16/apps/terminator.png
 URxvt*scrollBar: false
