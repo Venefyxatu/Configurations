@@ -15,3 +15,5 @@
     renames = true
 	external = /home/erik/git-diff-wrapper.sh
 
+[push]
+	default = simple
