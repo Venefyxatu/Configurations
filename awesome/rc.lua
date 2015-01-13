@@ -333,7 +333,7 @@ globalkeys = awful.util.table.join(
                 awful.prompt.run({ prompt = "New tag name: " },
                 mypromptbox[mouse.screen].widget,
                 function (s)
-                      shifty.add({ name = s })
+                      shifty.add({ name = s, screen = mouse.screen })
                     end,
                     nil)
                   end),
