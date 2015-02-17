@@ -59,12 +59,13 @@ shifty.config.tags = {
    ["recording"] = { position = 10, layout = awful.layout.suit.floating      },
    ["2:social"] = { position = 2, layout = awful.layout.suit.tile, nopopup = true, mwfact = 0.30, screen = math.min(screen.count(), 1), spawn = "/usr/bin/skype" },
    ["myterm"] = { layout = awful.layout.suit.max, nopopup = true, init = false },
-   ["3:term"] = { exclusive = true, position = 3, layout = awful.layout.suit.tile.bottom, mwfact = 0.75, persist = true, screen = math.max(screen.count(), 2) },
+   ["3:term"] = { exclusive = true, position = 3, layout = awful.layout.suit.tile.bottom, mwfact = 0.75, persist = true, screen = math.max(screen.count(), 1) },
    ["5:vmachines"] = { position = 5, layout = awful.layout.suit.max, nopopup = true,                   },
    ["6:ERP"] = { position = 6, leave_kills = true, layout = awful.layout.suit.max },
    ["7:office"] = { position = 7, layout = awful.layout.suit.max, nopopup = true },
-   ["9:www"] = { exclusive = true, position = 9, spawn = "/usr/bin/firefox", nopopup = true, layout=awful.layout.suit.max, persist = true, screen = math.max(screen.count(), 2) },
+   ["9:www"] = { exclusive = true, position = 9, spawn = "/usr/bin/firefox", nopopup = true, layout=awful.layout.suit.max, persist = true, screen = math.max(screen.count(), 1) },
    ["4:work"] = {position = 4, layout = awful.layout.suit.tile.left, mwfact = 0.70, nopopup = true },
+   ["video"] = { layout = awful.layout.suit.fair },
    ["dashboard"] = { layout = awful.layout.suit.max, nopopup = true, position = 20 },
    ["design"] = { layout = awful.layout.suit.floating, mwfact = 0.18, nopopup = true },
    ["development"] = { layout = awful.layout.suit.max },
@@ -78,12 +79,14 @@ shifty.config.tags = {
 
 shifty.config.apps = {
         { match = {"htop", ".*dzen.*", "Xfe.*"               }, tag = "sys"                                                     },
+        { match = {".*mplayer.*"                                 }, tag = "video"                                                     },
         { match = {"Conky"                                   }, tag = "dashboard"                                               },
         { match = {".*mutt.*", "offlineimap", ".*Skype.*", ".*Buddy List.*"    }, tag = "2:social",                               },
         { match = {".*VirtualBox.*"                          }, tag = "5:vmachines", nopopup = true                               },
         { match = {".*XVidCap.*", "avidemux.*"               }, tag = "recording", nopopup = true                               },
-        { match = {".*Opera.*", ".*Google Chrome.*"          }, tag = { "9:www", }, nopopup = true                                     },
+        { match = {".*Opera.*", ".*Google Chrome.*", ".*Vimperator.*"          }, tag = { "9:www", }, nopopup = true                                     },
         { match = {"Firefox.*", ".*Vimperator.*"             }, tag = { "4:work", "9:www"}, nopopup = true                                     },
+        --{ match = {".*Google Chrome.*"                       }, tag = { "4:work", "9:www"}, nopopup = true                                     },
         { match = {".*Terminator"                            }, tag = "myterm", nopopup = false                                 },
         { match = {"xterm", 'urxvt'                          }, tag = { "3:term", "4:work" }, nopopup = false,                    },
         { match = {"Gimp", "^dia$", "Layers, Channels", "Toolbox", "GNU Image" }, tag = "design", nopopup = true                },
@@ -246,7 +249,7 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
-mystatusbar = awful.wibox({ position = "bottom", screen = 2, ontop = false, width = 1, height = 16 })
+mystatusbar = awful.wibox({ position = "bottom", screen = math.max(screen.count(), 1), ontop = false, width = 1, height = 16 })
 
 for s = 1, screen.count() do
     -- Create dummy bar to reserve space for Conky
