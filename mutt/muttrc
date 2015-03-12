@@ -38,6 +38,8 @@ set copy=yes                                      # Save sent messages
 set folder="imaps://user@server1"
 set spoolfile='+INBOX'
 
+auto_view text/html                               # View html automatically
+
 
 # Don't show ALL headers, just the most interesting ones
 ignore *

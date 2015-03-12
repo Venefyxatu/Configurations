@@ -82,14 +82,15 @@ shifty.config.apps = {
         { match = {".*mutt.*", "offlineimap", ".*Skype.*", ".*Buddy List.*"    }, tag = "2:social",                               },
         { match = {".*VirtualBox.*"                          }, tag = "5:vmachines", nopopup = true                               },
         { match = {".*XVidCap.*", "avidemux.*"               }, tag = "recording", nopopup = true                               },
-        { match = {".*Opera.*", "Firefox.*", ".*Google Chrome.*"}, tag = { "9:www", "4:work" }, nopopup = true                                     },
+        { match = {".*Opera.*", ".*Google Chrome.*"          }, tag = { "9:www", }, nopopup = true                                     },
+        { match = {"Firefox.*", ".*Vimperator.*"             }, tag = { "4:work", "9:www"}, nopopup = true                                     },
         { match = {".*Terminator"                            }, tag = "myterm", nopopup = false                                 },
         { match = {"xterm", 'urxvt'                          }, tag = { "3:term", "4:work" }, nopopup = false,                    },
         { match = {"Gimp", "^dia$", "Layers, Channels", "Toolbox", "GNU Image" }, tag = "design", nopopup = true                },
         { match = {"gimp-image-window"                       }, slave = true,                                                   },
         { match = {"gqview"                                  }, tag = { "graph", "gqview" }                                     },
-        { match = {".*OpenOffice.*", "Document Viewer", ".*gedit", "(!Opening).*pdf", "zim", "evince", "XMind" }, tag = "7:office"          },
-        { match = {".*wing.*", "Eclipse", "Workspace Launcher", "Giggle", "pgAdmin", "MySQL Query.*", "Perforce P4Merge" }, tag = "development" },
+        { match = {".*libreoffice.*", ".*OpenOffice.*", "Document Viewer", ".*gedit", "(!Opening).*pdf", "zim", "evince", "XMind" }, tag = "7:office"          },
+        { match = {".*wing.*", "Eclipse", "Workspace Launcher", "Giggle", "pgAdmin", "MySQL Query.*", ".*Perforce P4Merge" }, tag = "development" },
         { match = {"rdesktop", "Xnest", "Remmina", class= "remmina" }, tag = "8:Remote Desktop"                                                },
         { match = {"herrie", "alsamixer", "Picard"           }, tag = "music", nopopup = false                                  },
         { match = {"MPlayer", "xmag",                        }, float = true,                                                   },
@@ -245,7 +246,7 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
-mystatusbar = awful.wibox({ position = "bottom", screen = 1, ontop = false, width = 1, height = 16 })
+mystatusbar = awful.wibox({ position = "bottom", screen = 2, ontop = false, width = 1, height = 16 })
 
 for s = 1, screen.count() do
     -- Create dummy bar to reserve space for Conky
@@ -328,7 +329,16 @@ globalkeys = awful.util.table.join(
                   end,
                   nil)
               end),
-    awful.key({modkey}, "a", shifty.add), -- creat a new tag
+    awful.key({modkey}, "a", 
+              function()
+                awful.prompt.run({ prompt = "New tag name: " },
+                mypromptbox[mouse.screen].widget,
+                function (s)
+                      shifty.add({ name = s, screen = mouse.screen })
+                    end,
+                    nil)
+                  end),
+    
     awful.key({modkey, "Shift"}, "r", shifty.rename), -- rename a tag
     awful.key({modkey, "Shift"}, "a", -- nopopup new tag
     function()
@@ -427,7 +437,7 @@ globalkeys = awful.util.table.join(
             awful.util.spawn_with_shell("/usr/bin/xclip -o -selection clipboard |xclip")
         end),
 
-   awful.key({ modkey             }, "F12",    function () awful.util.spawn("slock") end)
+   awful.key({ modkey             }, "F12",    function () awful.util.spawn("i3lock -c 999999") end)
 )
 
 clientkeys = awful.util.table.join(
