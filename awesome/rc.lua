@@ -94,22 +94,27 @@ end
 -- see http://awesome.naquadah.org/wiki/Shifty
 
 shifty.config.tags = {
-    w1 = {
-        layout    = awful.layout.suit.max,
-        mwfact    = 0.60,
-        exclusive = false,
-        position  = 1,
-        init      = true,
-        screen    = 1,
-        slave     = true,
+    term = {
+      exclusive = true,
+      position = 3,
+      layout = awful.layout.suit.tile.bottom,
+      mwfact = 0.75,
+      persist = true,
+      screen = math.max(screen.count(), 1) 
+    },
+    work = {
+      position = 4,
+      layout = awful.layout.suit.tile.left,
+      mwfact = 0.70,
+      nopopup = true 
     },
     web = {
         layout      = awful.layout.suit.tile.bottom,
         mwfact      = 0.65,
         exclusive   = true,
-        max_clients = 1,
-        position    = 4,
-        spawn       = browser,
+        position    = 9,
+        nopopup     = true,
+        layout      = awful.layout.suit.max,
     },
     mail = {
         layout    = awful.layout.suit.tile,
@@ -233,14 +238,22 @@ shifty.config.tags = {
 --]]
 
 shifty.config.apps = {
-    {
+      { 
         match = {
-            "Navigator",
-            "Vimperator",
-            "Gran Paradiso",
-        },
-        tag = "web",
-    },
+            "xterm", 
+            "urxvt"
+        }, 
+        tag = { "term", "work" }, 
+        nopopup = false, 
+      },
+      { 
+        match = {
+          ".*Firefox.*", 
+          ".*Vimperator.*"
+        }, 
+        tag = { "work", "web"}, 
+        nopopup = true                                     },
+
     {
         match = {
             "Shredder.*",
@@ -839,6 +852,7 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 
 os.execute("xrdb -merge ~/.Xresources")
 os.execute("runonce.sh conky &")
+os.execute("nm-applet &")
 os.execute("xcompmgr -D 4 -c -C -f -n &")
 os.execute("xmodmap ~/.Xmodmap")
 -- os.execute("runonce.sh dropbox &")
