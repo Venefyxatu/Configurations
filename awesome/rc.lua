@@ -387,7 +387,7 @@ do
         fbyidx(i)
         local g = client.focus:geometry()
         g.x = g.x + g.width / 2
-        g.y = g.y + g.height / 2
+        g.y = 10
         mouse.coords(g)
     end
 end
@@ -399,7 +399,7 @@ do -- Change focus_relative to put the mouse in a sane place.
         if client.focus and client.focus.screen == mouse.screen then
             local g = client.focus:geometry()
             g.x = g.x + g.width/2
-            g.y = g.y + g.height/2
+            g.y = 10
             mouse.coords(g)
         end
     end
@@ -855,6 +855,7 @@ os.execute("runonce.sh conky &")
 os.execute("nm-applet &")
 os.execute("xcompmgr -D 4 -c -C -f -n &")
 os.execute("xmodmap ~/.Xmodmap")
+os.execute("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &")
 -- os.execute("runonce.sh dropbox &")
 
 -- }}}
