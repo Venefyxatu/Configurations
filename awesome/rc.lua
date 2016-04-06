@@ -42,7 +42,7 @@ end
 -- Themes define colours, icons, and wallpapers
 -- theme = "/usr/share/awesome/themes/sky/theme.lua"
 -- theme = "/home/erik/.awesome/themes/current/theme.lua"
-theme = "/usr/share/awesome/themes/default/theme.lua"
+theme = "/home/erik/.awesome/default/theme.lua"
 beautiful.init(theme)
 
 -- This is used later as the default terminal and editor to run.
@@ -116,22 +116,10 @@ shifty.config.tags = {
         nopopup     = true,
         layout      = awful.layout.suit.max,
     },
-    mail = {
-        layout    = awful.layout.suit.tile,
-        mwfact    = 0.55,
-        exclusive = false,
-        position  = 5,
-        spawn     = mail,
-        slave     = true
-    },
-    media = {
-        layout    = awful.layout.suit.float,
+    lawaai = {
+        layout    = awful.layout.suit.max.fullscreen,
         exclusive = false,
         position  = 8,
-    },
-    office = {
-        layout   = awful.layout.suit.tile,
-        position = 9,
     },
 }
 --[[
@@ -252,9 +240,13 @@ shifty.config.apps = {
           ".*Vimperator.*"
         }, 
         tag = { "work", "web"}, 
-        nopopup = true                                     },
-
-    {
+        nopopup = true
+      },
+      {
+        match = { "lawaai" },
+        tag = "lawaai"
+      },
+      {
         match = {
             "Shredder.*",
             "Thunderbird",
@@ -851,9 +843,9 @@ client.add_signal("focus", function(c) c.border_color = beautiful.border_focus e
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 os.execute("xrdb -merge ~/.Xresources")
-os.execute("runonce.sh conky &")
-os.execute("nm-applet &")
-os.execute("xcompmgr -D 4 -c -C -f -n &")
+os.execute("/usr/bin/runonce.sh conky &")
+os.execute("/usr/bin/runonce.sh nm-applet &")
+os.execute("xcompmgr -D 6 -c -C -f -n &")
 os.execute("xmodmap ~/.Xmodmap")
 os.execute("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &")
 -- os.execute("runonce.sh dropbox &")
