@@ -94,6 +94,12 @@ end
 -- see http://awesome.naquadah.org/wiki/Shifty
 
 shifty.config.tags = {
+    social = {
+      position = 2,
+      layout = awful.layout.suit.max,
+      screen = 0
+      -- screen = math.min(screen.count(), 3)
+    },
     term = {
       exclusive = true,
       position = 3,
@@ -101,12 +107,6 @@ shifty.config.tags = {
       mwfact = 0.75,
       persist = true,
       screen = math.max(screen.count(), 1) 
-    },
-    work = {
-      position = 4,
-      layout = awful.layout.suit.tile.left,
-      mwfact = 0.70,
-      nopopup = true 
     },
     web = {
         layout      = awful.layout.suit.tile.bottom,
@@ -116,130 +116,48 @@ shifty.config.tags = {
         nopopup     = true,
         layout      = awful.layout.suit.max,
     },
+    dwarf_therapist = {
+      layout      = awful.layout.suit.max,
+      exclusive = true,
+      position = 5
+    },
+    dwarf_fortress = {
+      layout      = awful.layout.suit.max,
+      exclusive = true,
+      position = 6
+    },
+    office = {
+      layout = awful.layout.suit.max,
+      exclusive = false,
+      position = 7
+    },
     lawaai = {
         layout    = awful.layout.suit.max.fullscreen,
         exclusive = false,
         position  = 8,
     },
 }
---[[
-shifty.config.tags = {
-  recording = { 
-    position = 10,
-    layout = awful.layout.suit.floating
-  },
-  social = {
-    position = 2,
-    layout = awful.layout.suit.tile,
-    nopopup = true,
-    mwfact = 0.30,
-    screen = math.min(screen.count(),
-    1),
-    spawn = "/usr/bin/skype" 
-  },
-  myterm = { 
-    layout = awful.layout.suit.max,
-    nopopup = true,
-    init = false 
-  },
-  term = { 
-    exclusive = true,
-    position = 3,
-    layout = awful.layout.suit.tile.bottom,
-    mwfact = 0.75,
-    persist = true,
-    screen = math.max(screen.count(),
-    1) 
-  },
-  vmachines = { 
-    position = 5,
-    layout = awful.layout.suit.max,
-    nopopup = true,
-  },
-  ERP = { 
-    position = 6,
-    leave_kills = true,
-    layout = awful.layout.suit.max 
-  },
-  office = { 
-    position = 7,
-    layout = awful.layout.suit.max,
-    nopopup = true 
-  },
-  www = { 
-    exclusive = true,
-    position = 9,
-    spawn = "/usr/bin/firefox",
-    nopopup = true,
-    layout=awful.layout.suit.max,
-    persist = true,
-    screen = math.max(screen.count(),
-    1) 
-  },
-  work = {
-    position = 4,
-    layout = awful.layout.suit.tile.left,
-    mwfact = 0.70,
-    nopopup = true 
-  },
-  video = { 
-    layout = awful.layout.suit.fair 
-  },
-  dashboard = { 
-    layout = awful.layout.suit.max,
-    nopopup = true,
-    position = 20 
-  },
-  design = { 
-    layout = awful.layout.suit.floating,
-    mwfact = 0.18,
-    nopopup = true 
-  },
-  development = { 
-    layout = awful.layout.suit.max 
-  },
-  remote_desktop = { 
-    layout = awful.layout.suit.floating,
-    exclusive = true,
-  },
-  sys = { 
-    layout = awful.layout.suit.fair.horizontal,
-    exclusive = true,
-  },
-  music = { 
-    layout = awful.layout.suit.tile,
-    nopopup = false
-  },
-  df = { 
-    layout = awful.layout.suit.max,
-    nopopup = true,
-  },
-  astronomy = { 
-    layout = awful.layout.suit.max,
-    nopopup = true,
-  },
-  minecraft = { 
-    layout = awful.layout.suit.max,
-    nopopup = true,
-  },
-}
---]]
-
 shifty.config.apps = {
-      { 
+      {
+        match = {
+          "social.*"
+        },
+        tag = "social"
+      },
+      --[[ { 
         match = {
             "xterm", 
             "urxvt"
         }, 
-        tag = { "term", "work" }, 
+        tag = "term",
         nopopup = false, 
-      },
+      },--]]
       { 
         match = {
           ".*Firefox.*", 
           ".*Vimperator.*"
         }, 
-        tag = { "work", "web"}, 
+        tag = "web",
         nopopup = true
       },
       {
@@ -247,53 +165,21 @@ shifty.config.apps = {
         tag = "lawaai"
       },
       {
-        match = {
-            "Shredder.*",
-            "Thunderbird",
-            "mutt",
-        },
-        tag = "mail",
-    },
-    {
-        match = {
-            "pcmanfm",
-        },
-        slave = true
-    },
+        match = { "Dwarf Fortress.*" },
+        tag = "dwarf_fortress"
+      },
+      {
+        match = { "Dwarf Therapist.*" },
+        tag = "dwarf_therapist"
+      },
     {
         match = {
             "OpenOffice.*",
             "Abiword",
             "Gnumeric",
+            ".*pdf",
         },
         tag = "office",
-    },
-    {
-        match = {
-            "Mplayer.*",
-            "Mirage",
-            "gimp",
-            "gtkpod",
-            "Ufraw",
-            "easytag",
-        },
-        tag = "media",
-        nopopup = true,
-    },
-    {
-        match = {
-            "MPlayer",
-            "Gnuplot",
-            "galculator",
-        },
-        float = true,
-    },
-    {
-        match = {
-            terminal,
-        },
-        honorsizehints = false,
-        slave = true,
     },
     {
         match = {""},
@@ -575,11 +461,21 @@ globalkeys = awful.util.table.join(
     awful.key({modkey, "Shift"}, "p", shifty.send_prev), -- client to prev tag
     awful.key({modkey, "Control"}, "n", shifty.copy_next), -- client to next tag
     awful.key({modkey, "Control"}, "p", shifty.copy_prev), -- client to prev tag
-    awful.key({modkey, "Shift"},
+    awful.key({modkey, "Control"},
               "o",
               function()
                   local t = awful.tag.selected()
-                  local s = awful.util.cycle(screen.count(), t.screen + 1)
+                  local s = awful.util.cycle(screen.count(), awful.tag.getscreen(t) + 1)
+                  awful.tag.history.restore()
+                  t = shifty.tagtoscr(s, t)
+                  awful.tag.viewonly(t)
+                  awful.screen.focus(s)
+              end),
+    awful.key({modkey, "Control", "Shift" },
+              "o",
+              function()
+                  local t = awful.tag.selected()
+                  local s = awful.util.cycle(screen.count(), awful.tag.getscreen(t) - 1)
                   awful.tag.history.restore()
                   t = shifty.tagtoscr(s, t)
                   awful.tag.viewonly(t)
@@ -798,7 +694,6 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     { rule = { name = ".*- Skype.*Chat" }, properties = {}, callback = awful.client.setslave },
-    { rule = { class = "URxvt", tag="4:work" }, properties = { }, callback = awful.titlebar.add },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
