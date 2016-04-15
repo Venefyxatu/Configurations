@@ -10,7 +10,7 @@ URxvt*scrollstyle: rxvt
 # Fade when focus is lost
 URxvt.fading: 35
 # Set $TERM so stuff like screen and tmux know what they're running in
-URxvt.termName: rxvt
+# URxvt.termName: rxvt
 # Let the window manager know about bells
 URxvt*urgentOnBell: True
 # Meta key
