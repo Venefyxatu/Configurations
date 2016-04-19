@@ -46,3 +46,18 @@
 [submodule "awesome/shifty"]
 	path = awesome/shifty
 	url = https://github.com/cdump/awesome-shifty.git
+[submodule "awesome/tyrannical"]
+	path = awesome/tyrannical
+	url = https://github.com/Elv13/tyrannical.git
+[submodule "awesome/forgotten"]
+	path = awesome/forgotten
+	url = https://github.com/Elv13/forgotten.git
+[submodule "awesome/radical"]
+	path = awesome/radical
+	url = https://github.com/Elv13/radical
+[submodule "awesome/blind"]
+	path = awesome/blind
+	url = https://github.com/Venefyxatu/blind
+[submodule "awesome/awesome-configs"]
+	path = awesome/awesome-configs
+	url = https://github.com/Elv13/awesome-configs
