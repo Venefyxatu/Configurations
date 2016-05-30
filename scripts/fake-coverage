@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ "${1}" == "" ]
+then
+    export target=$(pwd)
+else
+    export target=${1}
+fi
+
+if [ ! -e ${target}/coverage ]
+then
+    ln -s ~/.fake-coverage/coverage ${target}
+fi
+
+echo export PATH=${PATH}:${target}
