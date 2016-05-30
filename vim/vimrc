@@ -127,13 +127,18 @@ autocmd BufRead,BufNewFile *.rscript,*.py,*sh set tabstop=4 expandtab shiftwidth
 autocmd BufRead,BufNewFile *.lua,*.rb set tabstop=2 expandtab shiftwidth=2 
 autocmd BufRead,BufNewFile *.rb syntax on set ft=ruby
 autocmd BufRead,BufNewFile *.rb set ai
+autocmd FileType python set colorcolumn=100
+
+nnoremap <F4> :let Tlist_Show_One_File=0<CR>
+
+nnoremap <F5> :Coveragepy show<CR>
 
 noremap <silent> <F6> :PyLintToggle<CR>
 noremap <silent> <F7> :NERDTreeToggle<CR>
 nnoremap <silent> <F8> :TlistToggle<CR>
 
 noremap <silent> <F9> :TMiniBufExplorer<CR>
-nnoremap <silent> <F10> :set ft=xml<CR>:%s/\(<[^\/].\{-}>\)/\r\1/g<CR>:%s/\(<\/.\{-}>\)\(<\/\)/>\1\r\2/g<CR>:g/^$/d<CR>vG=
+nnoremap <silent> <F10> :set ft=xml<CR>:%s/\(<[^\/].\{-}>\)/\r\1/g<CR>:%s/\(<\/.\{-}>\)\(<\/\)/>\1\r\2/g<CR>:g/^$/d<CR>vG=<CR>:%s/&#10;/\r/g<CR>
 nnoremap <silent> <F11> :YRShow<CR>
 
 function GetYRElem(nr)
@@ -187,18 +192,12 @@ let g:ctrlp_map = '<c-f>'
 let pymode_rope_vim_completion=1
 let pymode_rope_extended_complete=1
 
-nnoremap <F5> :w<CR> :silent make<CR>
-inoremap <F5> <Esc>:w<CR>:silent make<CR>
-vnoremap <F5> :<C-U>:w<CR>:silent make<CR
-
-noremap <F2> :w<CR> :!python ~/ABC/dacentec/source/clouddesktop-appcatalog/scripts/precommit.py && nosetests tests/libs/test_cifs_backend.py:CifsDriveBackendTestCase -x -s <CR>
-
 "Python-mode config
-
-" Enable python folding
 let g:pymode_folding = 1
 let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
 let g:pymode_lint_ignore = ""
+let g:pymode_lint_options_pep8 = {'max_line_length': 100}
+let g:pymode_rope = 0  " Rope is slow
 
 let Tlist_Show_One_File=1
 let Tlist_WinWidth=55
