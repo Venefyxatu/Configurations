@@ -61,3 +61,6 @@
 [submodule "awesome/awesome-configs"]
 	path = awesome/awesome-configs
 	url = https://github.com/Elv13/awesome-configs
+[submodule "vim/vim/bundle/coveragepy.vim"]
+	path = vim/vim/bundle/coveragepy.vim
+	url = https://github.com/alfredodeza/coveragepy.vim
