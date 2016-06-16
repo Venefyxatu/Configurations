@@ -106,8 +106,10 @@ mytags = {
     screen     = math.min(screen.count(), 3),
     volatile   = true,
     position   = 2,
+    layout     = awful.layout.suit.tile.left,
+    mwfact     = .20,
     class = {
-      "URxvt:social", 
+      "URxvt:social", "Pidgin"
     }
   },
   {
@@ -116,10 +118,11 @@ mytags = {
     screen     = web_screen,
     volatile   = true,
     position   = 9,
+    layout     = awful.layout.suit.max,
     class = {
       "Firefox"
     }
-  }
+  },
 }
 
 tyrannical.tags = mytags
@@ -434,7 +437,7 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey }, "F9",
             function ()
-                awful.util.spawn_with_shell("exe=`cat /home/erik/.dmenu/menu | dmenu -i -nb '#091030' -nf '#138EA1' -sb '#0C2245' -sf '#03DBFC'` && exec ${exe}")
+                awful.util.spawn_with_shell("exe=`cat /home/erik/.dmenu/menu | dmenu -i -nb '#091030' -nf '#138EA1' -sb '#0C2245' -sf '#03DBFC'` && PATH=$PATH:/home/erik/.screenlayout exec ${exe}")
             end),
 
     awful.key({ modkey }, "F10",
@@ -461,6 +464,9 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     --awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
+    awful.key({ modkey, "Control" }, "1",      function (c) awful.client.movetoscreen(c, 1)  end),
+    awful.key({ modkey, "Control" }, "2",      function (c) awful.client.movetoscreen(c, 2)  end),
+    awful.key({ modkey, "Control" }, "3",      function (c) awful.client.movetoscreen(c, 3)  end),
     awful.key({ modkey, "Shift"   }, "r",      function (c) c:redraw()                       end),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
     -- awful.key({ modkey,           }, "n",      function (c) c.minimized = not c.minimized    end),
@@ -554,6 +560,7 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     { rule = { name = ".*- Skype.*Chat" }, properties = {}, callback = awful.client.setslave },
+    { rule = { class = "Pidgin"}, except = { name = "Buddy List" }, callback = awful.client.setslave },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
