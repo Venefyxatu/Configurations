@@ -64,3 +64,12 @@
 [submodule "vim/vim/bundle/coveragepy.vim"]
 	path = vim/vim/bundle/coveragepy.vim
 	url = https://github.com/alfredodeza/coveragepy.vim
+[submodule "vim/vim/bundle/vimwiki"]
+	path = vim/vim/bundle/vimwiki
+	url = https://github.com/vimwiki/vimwiki.git
+[submodule "vim/vim/bundle/riv.vim"]
+	path = vim/vim/bundle/riv.vim
+	url = https://github.com/Rykka/riv.vim
+[submodule "vim/vim/bundle/InstantRst"]
+	path = vim/vim/bundle/InstantRst
+	url = https://github.com/Rykka/InstantRst
