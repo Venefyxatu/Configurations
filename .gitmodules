@@ -73,3 +73,6 @@
 [submodule "vim/vim/bundle/InstantRst"]
 	path = vim/vim/bundle/InstantRst
 	url = https://github.com/Rykka/InstantRst
+[submodule "vim/vim/bundle/tagbar"]
+	path = vim/vim/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar
