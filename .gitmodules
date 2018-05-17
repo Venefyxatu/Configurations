@@ -1,48 +1,6 @@
-[submodule "vim/vim/bundle/vim-fugitive"]
-	path = vim/vim/bundle/vim-fugitive
-	url = git://github.com/tpope/vim-fugitive.git
-[submodule "vim/vim/bundle/vim-colors-solarized"]
-	path = vim/vim/bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "vim/vim/bundle/ctrlp.vim"]
-	path = vim/vim/bundle/ctrlp.vim
-	url = https://github.com/kien/ctrlp.vim.git
-[submodule "vim/vim/bundle/nerdtree"]
-	path = vim/vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree
-[submodule "vim/vim/bundle/pydoc.vim"]
-	path = vim/vim/bundle/pydoc.vim
-	url = https://github.com/fs111/pydoc.vim.git
 [submodule "zsh/oh-my-zsh"]
 	path = zsh/oh-my-zsh
 	url = git://github.com/Venefyxatu/oh-my-zsh.git
-[submodule "vim/vim/bundle/vim-markdown"]
-	path = vim/vim/bundle/vim-markdown
-	url = git://github.com/hallison/vim-markdown.git
-[submodule "vim/vim/bundle/supertab"]
-	path = vim/vim/bundle/supertab
-	url = git://github.com/ervandew/supertab.git
-[submodule "vim/vim/bundle/snipmate.vim"]
-	path = vim/vim/bundle/snipmate.vim
-	url = git://github.com/msanders/snipmate.vim.git
-[submodule "vim/vim/bundle/minibufexpl.vim"]
-	path = vim/vim/bundle/minibufexpl.vim
-	url = git://github.com/fholgado/minibufexpl.vim.git
-[submodule "vim/vim/bundle/python-mode"]
-	path = vim/vim/bundle/python-mode
-	url = git://github.com/klen/python-mode.git
-[submodule "vim/vim/bundle/taglist.vim"]
-	path = vim/vim/bundle/taglist.vim
-	url = git://github.com/vim-scripts/taglist.vim.git
-[submodule "vim/vim/bundle/yankring.vim"]
-	path = vim/vim/bundle/yankring.vim
-	url = git://github.com/vim-scripts/YankRing.vim.git
-[submodule "vim/vim/bundle/ack.vim"]
-	path = vim/vim/bundle/ack.vim
-	url = https://github.com/mileszs/ack.vim.git
-[submodule "vim/vim/bundle/rainbow_parentheses.vim"]
-	path = vim/vim/bundle/rainbow_parentheses.vim
-	url = https://github.com/kien/rainbow_parentheses.vim.git
 [submodule "awesome/shifty"]
 	path = awesome/shifty
 	url = https://github.com/cdump/awesome-shifty.git
@@ -61,9 +19,3 @@
 [submodule "awesome/awesome-configs"]
 	path = awesome/awesome-configs
 	url = https://github.com/Elv13/awesome-configs
-[submodule "vim/vim/bundle/coveragepy.vim"]
-	path = vim/vim/bundle/coveragepy.vim
-	url = https://github.com/alfredodeza/coveragepy.vim
-[submodule "vim/vim/bundle/tagbar"]
-	path = vim/vim/bundle/tagbar
-	url = https://github.com/majutsushi/tagbar
