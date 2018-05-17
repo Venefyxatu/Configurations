@@ -1,5 +1,43 @@
-call pathogen#infect()
-call pathogen#helptags()
+" Vundle configuration
+
+set nocompatible
+filetype off
+
+" Add Vundle to runtimepath
+set rtp+=~/.vim/bundle/Vundle
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'mileszs/ack.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'ivalkeen/vim-ctrlp-tjump'
+Plugin 'fholgado/minibufexpl.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'hallison/vim-markdown'
+Plugin 'vim-scripts/YankRing.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'alfredodeza/coveragepy.vim'
+Plugin 'Vimjas/vim-python-pep8-indent'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'nvie/vim-flake8'
+Plugin 'python-rope/ropevim'
+Plugin 'w0rp/ale'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'matthew-brett/vim-rst-sections'
+Plugin 'nvie/vim-rst-tables'
+
+call vundle#end()
+
+" End Vundle configuration
+
+
+filetype plugin indent on
+
 
 " Solarized
 let g:solarized_termtrans=1
@@ -10,7 +48,6 @@ colorscheme solarized
 set hlsearch
 set cursorline
 set tw=0
-set nocompatible
 set autoindent
 set cindent
 set tabstop=4
@@ -42,8 +79,6 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_ignore_files=['.*\.py$']
 let g:syntastic_javascript_checkers = ['jsl']
 let g:syntastic_css_checkers = ['csslint']
-
-filetype plugin indent on
 
 :imap <Esc>Oq 1
 :imap <Esc>Or 2
@@ -129,6 +164,7 @@ autocmd BufRead,BufNewFile *.rb syntax on set ft=ruby
 autocmd BufRead,BufNewFile *.rb set ai
 autocmd FileType python set colorcolumn=120
 
+nnoremap <F3> :YcmCompleter GoTo<CR>
 nnoremap <F4> :let Tlist_Show_One_File=0<CR>
 
 nnoremap <F5> :Coveragepy show<CR>
@@ -141,6 +177,8 @@ noremap <silent> <F9> :MBEToggle<CR>
 nnoremap <silent> <F10> :set ft=xml<CR>:%s/\(<[^\/].\{-}>\)/\r\1/g<CR>:%s/\(<\/.\{-}>\)\(<\/\)/>\1\r\2/g<CR>:g/^$/d<CR>vG=<CR>:%s/&#10;/\r/g<CR>
 nnoremap <silent> <F11> :YRShow<CR>
 
+map <buffer> <F12> :call Flake8()<CR>
+
 function GetYRElem(nr)
     :YRGetElem a:nr
 endfunction
@@ -150,21 +188,24 @@ command -nargs=1 YG call GetYRElem(<f-args>)
 let g:ctrlp_map = '<c-f>'
 
 
-let pymode_rope_vim_completion=1
-let pymode_rope_extended_complete=1
-
-"Python-mode config
-let g:pymode_folding = 1
-let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
-let g:pymode_lint_ignore = ""
-let g:pymode_lint_options_pep8 = {'max_line_length': 120}
-let g:pymode_rope = 0  " Rope is slow
+let g:flake8_show_in_file=1
 
 let Tlist_Show_One_File=1
 let Tlist_WinWidth=55
+
 
 
 set statusline=%f\ %h%m%r%w%y\ %{fugitive#statusline()}\ [%{tagbar#currenttag('%s','')}]\ %=%-14.(%l,%c%V%)\ %P
 set laststatus=2
 
 cmap w!! w !sudo tee > /dev/null %
+
+au VimEnter * RainbowParenthesesToggle
+au VimEnter * RainbowParenthesesLoadRound
+au VimEnter * RainbowParenthesesLoadSquare
+au VimEnter * RainbowParenthesesLoadBraces
+
+let g:strip_whitelines_at_eof=1
+let g:strip_whitespace_on_save = 1
+
+nnoremap <c-]> :CtrlPtjump<cr>
