@@ -147,45 +147,6 @@ endfunction
 
 command -nargs=1 YG call GetYRElem(<f-args>)
 
-let basedir = "/DATA/projects"
-let domain = "be.venefyxatu.palm."
-let appversion = "1.0.0"
-
-function GenerateScene(basedir, project, name)
-    exe '!palm-generate -t new_scene -p "name=' . a:name . '" ' . a:basedir . '/' . a:project
-endfunction
-
-command -nargs=+ Newscene call GenerateScene(basedir, <f-args>)
-
-function Testrun(basedir, domain, appversion, project)
-    call PackageApp(a:basedir, a:project)
-    call InstallApp(a:domain, a:project, a:appversion)
-    call LaunchApp(a:domain, a:project)
-endfunction
-
-function PackageApp(basedir, project)
-    silent exe '!palm-package ' . a:basedir . '/' . a:project 
-endfunction
-
-function InstallApp(domain, project, appversion)
-    silent exe '!palm-install ' . a:domain . a:project . '_' . a:appversion . '_all.ipk' 
-endfunction
-
-function LaunchApp(domain, project)
-    silent exe '!palm-launch ' . a:domain . a:project 
-endfunction
-
-function RemoveApp(basedir, domain, appversion, project)
-    silent exe '!palm-install -r ' . a:domain . a:project
-    silent exe '!rm -f ' . a:basedir . '/' . a:project . '/' . a:domain . a:project . '_' . a:appversion . '_all.ipk'
-endfunction
-
-command -nargs=1 Testrun call Testrun(basedir, domain, appversion, <f-args>)
-command -nargs=1 Cleanup call RemoveApp(basedir, domain, appversion, <f-args>)
-
-set tw=0
-
-
 let g:ctrlp_map = '<c-f>'
 
 
@@ -205,3 +166,5 @@ let Tlist_WinWidth=55
 
 set statusline=%f\ %h%m%r%w%y\ %{fugitive#statusline()}\ [%{tagbar#currenttag('%s','')}]\ %=%-14.(%l,%c%V%)\ %P
 set laststatus=2
+
+cmap w!! w !sudo tee > /dev/null %
