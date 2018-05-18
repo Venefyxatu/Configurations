@@ -19,6 +19,3 @@
 [submodule "awesome/awesome-configs"]
 	path = awesome/awesome-configs
 	url = https://github.com/Elv13/awesome-configs
-[submodule "vim/vim/bundle/Vundle"]
-	path = vim/vim/bundle/Vundle
-	url = https://github.com/VundleVim/Vundle.vim.git
