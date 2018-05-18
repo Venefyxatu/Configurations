@@ -15,6 +15,15 @@ alias testwatch="/home/erik/python3_venv/bin/testwatch"
 alias tw="/home/erik/python3_venv/bin/testwatch"
 alias testwatchoutput="/home/erik/python3_venv/bin/testwatchoutput"
 alias two="/home/erik/python3_venv/bin/testwatchoutput"
+alias screenoff="sudo bash -c 'vbetool dpms off; read ans; vbetool dpms on'"
+# alias d0rfs='xpra attach --encoding=rgb --ssh="ssh -p 2224" ssh:df@localhost:100'
+alias d0rfs='cp -r ~/df_linux/data/save ~/d0rfbackups/$(date '+%Y-%m-%d_%H:%M:%S')/ && ~/df_linux/dfhack'
+alias d0rftherapist='docker exec -t -u df d0rfs /bin/bash -c "DISPLAY=:100 /df_linux/bin/DwarfTherapist"'
+alias vact='source venv/bin/activate'
+alias td='testdriver'
+# tee /dev/tty to send output to current terminal
+# awk: enable "show" variable at first line you want to print, disable at last line. in between: perform the default action (print line)
+alias td-cover="td test | tee /dev/tty | awk '/out: Name/ { show=1 } show; /TOTAL/ { show=0 }' | sed 's/\[127.0.0.1:9041\] out: //' >| coverage.txt"
 
 alias mkvirtulenv='mkvirtualenv --no-site-packages'
 alias revenv='deactivate; rm -rf venv && virtualenv venv && source venv/bin/activate'
@@ -163,7 +172,7 @@ alias iwlist="sudo /sbin/iwlist"
 alias iwconfig="sudo /sbin/iwconfig"
 alias dhcpcd="sudo /sbin/dhcpcd"
 alias iptables="sudo /sbin/iptables"
-alias showmount="sudo /usr/sbin/showmount"
+alias showmount="sudo /sbin/showmount"
 alias brctl="sudo /sbin/brctl"
 alias mtr="sudo /usr/sbin/mtr -t"
 
@@ -349,7 +358,8 @@ fi
 
 bindkey -M vicmd '?' history-incremental-search-backward
 
-PATH=~/bin:/opt/vagrant/embedded/bin/:/opt/p4v/bin:/home/erik/android-sdk-linux/tools/:/home/erik/android-sdk-linux/platform-tools/:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=~/bin:/opt/vagrant/embedded/bin/:/opt/p4v/bin:/home/erik/android-sdk-linux/tools/:/home/erik/android-sdk-linux/platform-tools/:$PATH:$HOME/.rvm/bin:/opt/cisco/anyconnect/bin:/opt/jre1.8.0_91:/home/erik/Mongoclient-linux-x64:/opt/Unity/Editor:~/.local/bin
+# :/opt/Unity/MonoDevelop/bin
 
 if [ -e ~/.rvm/scripts/rvm ]
 then
