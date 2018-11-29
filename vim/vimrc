@@ -30,6 +30,7 @@ Plugin 'w0rp/ale'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'matthew-brett/vim-rst-sections'
 Plugin 'nvie/vim-rst-tables'
+Plugin 'vimwiki/vimwiki'
 
 call vundle#end()
 
@@ -43,7 +44,7 @@ filetype plugin indent on
 let g:solarized_termtrans=1
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme iceberg
 
 set hlsearch
 set cursorline
@@ -148,7 +149,7 @@ let &guicursor = &guicursor . ",a:blinkon0"
 autocmd BufRead,BufNewFile *.py,*.rscript syntax on set ft=python
 autocmd BufRead,BufNewFile *.py,*.rscript set ai
 autocmd BufRead,BufNewFile *.rscript,*.py,*sh set tabstop=4 expandtab shiftwidth=4
-autocmd BufRead,BufNewFile *.lua,*.rb set tabstop=2 expandtab shiftwidth=2 
+autocmd BufRead,BufNewFile *.lua,*.rb set tabstop=2 expandtab shiftwidth=2
 autocmd BufRead,BufNewFile *.rb syntax on set ft=ruby
 autocmd BufRead,BufNewFile *.rb set ai
 autocmd FileType python set colorcolumn=120

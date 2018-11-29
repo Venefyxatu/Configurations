@@ -1,51 +1,27 @@
-! URxvt*font: -misc-fixed-medium-r-normal--14-130-75-75-c-70-iso8859-1
 URxvt*font: -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso8859-1
-
-! URxvt*font: xft:Terminus:size=12
-!URxvt*font: xft:Terminus for Powerline:size=12
-
 URxvt.iconFile: /usr/share/icons/hicolor/16x16/apps/terminator.png
 URxvt*scrollBar: false
 URxvt*scrollstyle: rxvt
-# Fade when focus is lost
+
+!  Fade when focus is lost
 URxvt.fading: 35
-# Set $TERM so stuff like screen and tmux know what they're running in
-# URxvt.termName: rxvt
-# Let the window manager know about bells
+
+!  Let the window manager know about bells
 URxvt*urgentOnBell: True
-# Meta key
+
+!  Meta key
 *modifier: alt
-# Give me a login shell instead of a child shell
+
+!  Give me a login shell instead of a child shell
 *loginShell: true
-# Put text all the way to the edge of the window
+
+!  Put text all the way to the edge of the window
 URxvt.internalBorder: 0
 
-
-################################################################################
-# BLUE THEME
-################################################################################
-## Appearance
-#URxvt.background: #091030
-#URxvt.foreground: white
-#URxvt.transparent: true
-#URxvt.tintColor: #03DBFC
-#URxvt.shading: 100
-#*.font: -misc-fixed-medium-r-normal--14-130-75-75-c-70-iso10646-1
-#URxvt.scrollColor: #CCCCCC
-#
-## Redefine the default red to something that can be read on a blue background
-#URxvt*color1: #FF6666
-## Same with default magenta
-#URxvt*color5: #10C3C9
-##URxvt*color1: #D87047
-#URxvt*color9: #FF9999
-## Redefine the default blue to something that can be read on a blue background
-#URxvt*color4: #9999FF
-#URxvt*color12: #03DBFC
-
-# Make URLs yankable - way cooler than clickable
-urxvt*perl-ext:   default,url-select,clipboard,keyboard-select
-urxvt*keysym.M-j: perl:url-select:select_next
-urxvt*keysym.M-Escape: perl:keyboard-select:activate
-urxvt*url-select.launcher: /usr/bin/firefox  
-urxvt*url-select.underline: true
+URxvt.perl-lib: /home/erik/source/urxvt-perls
+URxvt.perl-ext-common: default,keyboard-select,matcher
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keyboard-select.launcher: /usr/bin/google-chrome
+URxvt.keyboard-select.underline: true
+URxvt.keyboard-select.clipboard: true
+URxvt.matcher.button: 1
