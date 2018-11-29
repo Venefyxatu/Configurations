@@ -11,10 +11,6 @@ fpath=(/home/erik/source/spielerei/zsh-completions/ $fpath)
 #ZSH_THEME="nicoulaj"
 ZSH_THEME="venefyxatu"
 
-alias testwatch="/home/erik/python3_venv/bin/testwatch"
-alias tw="/home/erik/python3_venv/bin/testwatch"
-alias testwatchoutput="/home/erik/python3_venv/bin/testwatchoutput"
-alias two="/home/erik/python3_venv/bin/testwatchoutput"
 alias screenoff="sudo bash -c 'vbetool dpms off; read ans; vbetool dpms on'"
 # alias d0rfs='xpra attach --encoding=rgb --ssh="ssh -p 2224" ssh:df@localhost:100'
 alias d0rfs='cp -r ~/df_linux/data/save ~/d0rfbackups/$(date '+%Y-%m-%d_%H:%M:%S')/ && ~/df_linux/dfhack'
@@ -24,12 +20,18 @@ alias td='testdriver'
 # tee /dev/tty to send output to current terminal
 # awk: enable "show" variable at first line you want to print, disable at last line. in between: perform the default action (print line)
 alias td-cover="td test | tee /dev/tty | awk '/out: Name/ { show=1 } show; /TOTAL/ { show=0 }' | sed 's/\[127.0.0.1:9041\] out: //' >| coverage.txt"
+alias es5='es5 -f ~/es5.yaml'
+
+alias testwatch="/home/erik/venv3/bin/testwatch"
+alias tw="/home/erik/venv3/bin/testwatch"
+alias testwatchoutput="/home/erik/venv3/bin/testwatchoutput"
+alias two="/home/erik/venv3/bin/testwatchoutput"
 
 alias mkvirtulenv='mkvirtualenv --no-site-packages'
 alias revenv='deactivate; rm -rf venv && virtualenv venv && source venv/bin/activate'
-alias revenv3='deactivate; rm -rf python3_venv && python3.6 -m virtualenv -p python3.6 python3_venv && source python3_venv/bin/activate'
+alias revenv3='deactivate; rm -rf venv3 && python3.7 -m virtualenv -p python3.7 venv3 && source venv3/bin/activate'
 alias vact='source venv/bin/activate'
-alias 3vact='source python3_venv/bin/activate'
+alias vact3='source venv3/bin/activate'
 alias td='testdriver'
 
 # Example aliases
@@ -76,18 +78,18 @@ export EDITOR=vim
 # virtualenv
 ################################################################################
 
-export WORKON_HOME=$HOME/.virtualenvs
-
-POTENTIAL_VIRTUALENVWRAPPER_SCRIPTS=""
-
-for venv_script in /usr/local/bin/virtualenvwrapper.sh /usr/bin/virtualenvwrapper.sh /etc/bash_completion.d/virtualenvwrapper
-do
-    if [ -e $venv_script ]
-    then
-        source $venv_script
-        break
-    fi
-done
+# export WORKON_HOME=$HOME/.virtualenvs
+#
+# POTENTIAL_VIRTUALENVWRAPPER_SCRIPTS=""
+#
+# for venv_script in /usr/local/bin/virtualenvwrapper.sh /usr/bin/virtualenvwrapper.sh /etc/bash_completion.d/virtualenvwrapper
+# do
+#     if [ -e $venv_script ]
+#     then
+#         source $venv_script
+#         break
+#     fi
+# done
 
 ################################################################################
 # completion
@@ -365,3 +367,6 @@ if [ -e ~/.rvm/scripts/rvm ]
 then
     source ~/.rvm/scripts/rvm
 fi
+
+if [ -e /home/erik/.nix-profile/etc/profile.d/nix.sh ]; then . /home/erik/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+export NIX_PATH=$NIX_PATH:$HOME/.nix-defexpr/channels

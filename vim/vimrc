@@ -4,7 +4,7 @@ set nocompatible
 filetype off
 
 " Add Vundle to runtimepath
-set rtp+=~/.vim/bundle/Vundle
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
@@ -31,6 +31,7 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'matthew-brett/vim-rst-sections'
 Plugin 'nvie/vim-rst-tables'
 Plugin 'vimwiki/vimwiki'
+Plugin 'xolox/vim-misc'
 
 call vundle#end()
 
@@ -167,7 +168,7 @@ noremap <silent> <F9> :MBEToggle<CR>
 nnoremap <silent> <F10> :set ft=xml<CR>:%s/\(<[^\/].\{-}>\)/\r\1/g<CR>:%s/\(<\/.\{-}>\)\(<\/\)/>\1\r\2/g<CR>:g/^$/d<CR>vG=<CR>:%s/&#10;/\r/g<CR>
 nnoremap <silent> <F11> :YRShow<CR>
 
-map <buffer> <F12> :call Flake8()<CR>
+nnoremap <buffer> <F12> :call Flake8()<CR>
 
 function GetYRElem(nr)
     :YRGetElem a:nr
@@ -176,6 +177,17 @@ endfunction
 command -nargs=1 YG call GetYRElem(<f-args>)
 
 let g:ctrlp_map = '<c-f>'
+let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir']
+
+function! s:ctrlp_tags(ext)
+    if !exists('g:ctrlp_builtins')
+        run autoload/ctrlp.vim
+    end
+    call ctrlp#init(ctrlp#{a:ext}#id())
+endf
+
+" Then create some mappings:
+nnoremap <silent> <leader><space>l :cal <SID>ctrlp_tags('tags')<cr>
 
 
 let g:flake8_show_in_file=1
@@ -196,5 +208,13 @@ au VimEnter * RainbowParenthesesLoadBraces
 
 let g:strip_whitelines_at_eof=1
 let g:strip_whitespace_on_save = 1
+
+let g:easytags_cmd = '/usr/bin/ctags-exuberant'
+let g:easytags_async = 1
+let g:easytags_file = './.vimtags'
+let g:easytags_autorecurse = 1
+
+
+set tags=.vimtags
 
 nnoremap <c-]> :CtrlPtjump<cr>
