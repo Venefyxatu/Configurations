@@ -1,6 +1,5 @@
 set sidebar_width=30
 set sidebar_visible=yes
-set sidebar_delim="|"
 color sidebar_new yellow default
 bind index \CP sidebar-prev
 bind index \CN sidebar-next
@@ -8,10 +7,16 @@ bind index \CO sidebar-open
 bind pager \CP sidebar-prev
 bind pager \CN sidebar-next
 bind pager \CO sidebar-open
- 
+
 # Anonymized configuration ;-)
 mailboxes \
-    imaps://<user>@<server>/INBOX \
-    imaps://<user>@<server>/INBOX \
-    imaps://<user>@<server>/INBOX \
-    imaps://<user>@<server>/INBOX \
+    imaps://venefyxatu@imap.gmail.com/INBOX \
+    imaps://venefyxatu@imap.gmail.com/ASC \
+    imaps://venefyxatu@imap.gmail.com/Amazon \
+    imaps://venefyxatu@imap.gmail.com/Dommel \
+    imaps://venefyxatu@imap.gmail.com/Git \
+    imaps://venefyxatu@imap.gmail.com/Roleplay \
+    imaps://venefyxatu@imap.gmail.com/Sites \
+    imaps://heerener@imap.gmail.com/INBOX \
+    imaps://aschermcentrum@imap.gmail.com/INBOX \
+    imaps://evolve.wings@imap.gmail.com/INBOX

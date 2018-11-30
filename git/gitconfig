@@ -1,6 +1,6 @@
 [user]
 	name = Erik Heeren
-	email = venefyxatu+git@gmail.com
+	email = erik.heeren@hgst.com
 
 [color]
 	diff = always
@@ -13,7 +13,6 @@
 
 [diff]
     renames = true
-	external = /home/erik/git-diff-wrapper.sh
 
 [push]
 	default = matching

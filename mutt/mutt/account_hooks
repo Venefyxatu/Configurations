@@ -4,11 +4,14 @@ account-hook . 'unset imap_user'
 # For every server, set the imap_user.  
 # Don't set the password - I'll enter it when prompted
 
-account-hook "imaps://user@imap.gmail.com" \
-  'set imap_user=user@gmail.com'
+account-hook "imaps://venefyxatu@imap.gmail.com" \
+  'set imap_user=venefyxatu@gmail.com'
 
-account-hook "imaps://user@imap.gmail.com" \
-  'set imap_user=user@gmail.com'
+account-hook "imaps://heerener@imap.gmail.com" \
+  'set imap_user=heerener@gmail.com'
 
-account-hook "imaps://mailserver.domain.com" \
-  'set imap_user=user@domain.com'
+account-hook "imaps://aschermcentrum@imap.gmail.com" \
+  'set imap_user=aschermcentrum@gmail.com'
+
+account-hook "imaps://evolve.wings@imap.gmail.com" \
+  'set imap_user=evolve.wings@gmail.com'

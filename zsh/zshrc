@@ -11,6 +11,11 @@ fpath=(/home/erik/source/spielerei/zsh-completions/ $fpath)
 #ZSH_THEME="nicoulaj"
 ZSH_THEME="venefyxatu"
 
+alias tmov="mplayer -vf rotate=1,scale -zoom -xy 1080"
+alias testwatch="/home/erik/venv3/bin/testwatch"
+alias tw="/home/erik/venv3/bin/testwatch"
+alias testwatchoutput="/home/erik/venv3/bin/testwatchoutput"
+alias two="/home/erik/venv3/bin/testwatchoutput"
 alias screenoff="sudo bash -c 'vbetool dpms off; read ans; vbetool dpms on'"
 # alias d0rfs='xpra attach --encoding=rgb --ssh="ssh -p 2224" ssh:df@localhost:100'
 alias d0rfs='cp -r ~/df_linux/data/save ~/d0rfbackups/$(date '+%Y-%m-%d_%H:%M:%S')/ && ~/df_linux/dfhack'
@@ -34,13 +39,13 @@ alias vact='source venv/bin/activate'
 alias vact3='source venv3/bin/activate'
 alias td='testdriver'
 
+alias nohogs='sudo /home/erik/bin/cpuhogs off'
+alias lowhogs='cpulimit -P /opt/Symantec/symantec_antivirus/rtvscand -l 15 &'
+alias hogs='sudo /home/erik/bin/cpuhogs on'
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-if [ -f /etc/lsb-release ]
-then
-    alias ack="/usr/bin/ack-grep"
-fi
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -63,7 +68,8 @@ DISABLE_AUTO_TITLE="true"
 #
 # ******** WARNING: zsh-syntax-highlighting must be in the last position!
 #
-plugins=(git lol mercurial python jira zsh-syntax-highlighting)
+# plugins=(git lol python jira zsh-syntax-highlighting)
+plugins=(git lol python jira zsh-syntax-highlighting zsh-navigation-tools)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -358,9 +364,10 @@ else
     bindkey "^[[B" down-line-or-beginning-search        # down
 fi
 
-bindkey -M vicmd '?' history-incremental-search-backward
+# bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M vicmd '?' znt-history-widget
 
-PATH=~/bin:/opt/vagrant/embedded/bin/:/opt/p4v/bin:/home/erik/android-sdk-linux/tools/:/home/erik/android-sdk-linux/platform-tools/:$PATH:$HOME/.rvm/bin:/opt/cisco/anyconnect/bin:/opt/jre1.8.0_91:/home/erik/Mongoclient-linux-x64:/opt/Unity/Editor:~/.local/bin
+PATH=~/bin:/opt/vagrant/embedded/bin/:/opt/p4v/bin:/home/erik/android-sdk-linux/tools/:/home/erik/android-sdk-linux/platform-tools/:$PATH:$HOME/.rvm/bin:/opt/cisco/anyconnect/bin:/opt/jre1.8.0_91:/home/erik/Mongoclient-linux-x64:/opt/Unity/Editor
 # :/opt/Unity/MonoDevelop/bin
 
 if [ -e ~/.rvm/scripts/rvm ]
@@ -370,3 +377,6 @@ fi
 
 if [ -e /home/erik/.nix-profile/etc/profile.d/nix.sh ]; then . /home/erik/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 export NIX_PATH=$NIX_PATH:$HOME/.nix-defexpr/channels
+
+# Set this to allow vim to use all terminal colors, instead of only the dark ones
+TERM=xterm-256color

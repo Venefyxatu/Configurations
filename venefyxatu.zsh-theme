@@ -6,7 +6,7 @@
 # URL: http://tech.venefyxatu.be/
 #
 # Created on:		September 28, 2012
-# Last modified on:	October 24, 2012
+# Last modified on:	November 27, 2018
 
 
 # Load required modules.
@@ -15,14 +15,9 @@ autoload -Uz vcs_info
 
 # Customizable parameters.
 PROMPT_PATH_MAX_LENGTH=30
-PROMPT_DEFAULT_END=">"
+PROMPT_DEFAULT_END="»"
 PROMPT_ROOT_END="# "
-if [ `hostname` = 'abclaptop' ]
-then
-    PROMPT_SUCCESS_COLOR=$FG[300]
-else
-    PROMPT_SUCCESS_COLOR=$FG[024]
-fi
+PROMPT_SUCCESS_COLOR=$FG[024]
 
 PROMPT_FAILURE_COLOR=$FG[124]
 PROMPT_VCS_INFO_COLOR=$FG[100]
@@ -69,6 +64,5 @@ zstyle ':vcs_info:*:*' nvcsformats "%~" ""
 zstyle ':vcs_info:hg*:netbeans' use-simple true
 
 PROMPT="
-$FG[$NCOLOR]------------------------------------------------------------%{$reset_color%}
-%(0?.%{$PROMPT_SUCCESS_COLOR%}.%{$PROMPT_FAILURE_COLOR%})[%n@%m]%{$FX[bold]%} %(!.$PROMPT_ROOT_END.$PROMPT_DEFAULT_END)%{$FX[no-bold]%}%{$FX[reset]%} "
+%(0?.%{$PROMPT_SUCCESS_COLOR%}.%{$PROMPT_FAILURE_COLOR%})[%D{%Y-%m-%d %H:%M:%S}] [%n@%m] %(!.$PROMPT_ROOT_END.$PROMPT_DEFAULT_END)%{$FX[reset]%} "
 RPROMPT="%d%  [%{$PROMPT_VCS_INFO_COLOR%}"'${vcs_info_msg_0_}'"%{$FX[reset]%}]"

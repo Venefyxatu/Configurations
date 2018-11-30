@@ -35,7 +35,7 @@ set reply_regexp="^(re([\[0-9\]+])*|betr):[ \t]*" # The reply regexp: I get more
 set reply_to=yes                                  # Use the reply-to field for what it's for
 set tilde=yes                                     # Do the vim thing with tildes
 set copy=yes                                      # Save sent messages
-set folder="imaps://user@server1"
+set folder="imaps://venefyxatu@imap.gmail.com"
 set spoolfile='+INBOX'
 
 auto_view text/html                               # View html automatically
