@@ -18,13 +18,14 @@ hi Cursor          guibg=#cc4455  guifg=white                     ctermbg=4     
 hi link CursorIM Cursor
 hi Normal          guibg=#323B3D  guifg=#BDD6DB    gui=none       ctermbg=0     ctermfg=15
 hi NonText         guibg=bg       guifg=#BDD6DB                   ctermbg=8     ctermfg=14
-hi Visual          guibg=#557799  guifg=white      gui=none       ctermbg=9     ctermfg=15
+hi Visual          guibg=#557799  guifg=white      gui=none       ctermbg=14     ctermfg=15
 
 hi Linenr          guibg=bg       guifg=#aaaaaa    gui=none       ctermbg=bg    ctermfg=7
 
 hi Directory       guibg=bg       guifg=#337700    gui=none       ctermbg=bg    ctermfg=10
 
-hi IncSearch       guibg=#0066cc  guifg=white      gui=none       ctermbg=1     ctermfg=15
+hi IncSearch       guibg=#0066cc  guifg=white      gui=none       ctermbg=4     ctermfg=15
+hi Search          guibg=#0066cc  guifg=white      gui=none       ctermbg=4     ctermfg=15
 hi link Seach IncSearch
 
 hi SpecialKey      guibg=bg       guifg=fg         gui=none       ctermbg=bg    ctermfg=fg
@@ -39,8 +40,8 @@ hi Question        guibg=bg       guifg=#59C0E3                   ctermbg=bg    
 hi link  WarningMsg  ErrorMsg
 
 hi StatusLine      guibg=#ffeecc  guifg=black                     ctermbg=14    ctermfg=0
-hi StatusLineNC    guibg=#cc4455  guifg=white      gui=none       ctermbg=4     ctermfg=11
-hi VertSplit       guibg=#cc4455  guifg=white      gui=none       ctermbg=4     ctermfg=11
+hi StatusLineNC    guibg=#cc4455  guifg=white      gui=none       ctermbg=4     ctermfg=4
+hi VertSplit       guibg=#cc4455  guifg=white      gui=none       ctermbg=4     ctermfg=4
 
 hi DiffAdd         guibg=#446688  guifg=fg         gui=none       ctermbg=1     ctermfg=fg
 hi DiffChange      guibg=#558855  guifg=fg         gui=none       ctermbg=2     ctermfg=fg
