@@ -21,6 +21,7 @@ hi NonText         guibg=bg       guifg=#BDD6DB                   ctermbg=8     
 hi Visual          guibg=#557799  guifg=white      gui=none       ctermbg=14     ctermfg=15
 
 hi Linenr          guibg=bg       guifg=#aaaaaa    gui=none       ctermbg=bg    ctermfg=7
+hi CursorLinenr    guibg=bg       guifg=#aaaaaa    gui=none       ctermbg=8    ctermfg=6
 
 hi Directory       guibg=bg       guifg=#337700    gui=none       ctermbg=bg    ctermfg=10
 
