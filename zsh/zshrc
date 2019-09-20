@@ -11,6 +11,14 @@ fpath=(/home/erik/source/spielerei/zsh-completions/ $fpath)
 #ZSH_THEME="nicoulaj"
 ZSH_THEME="venefyxatu"
 
+# clipboard magic
+alias file-to-mouse='xclip -selection primary <'
+alias file-to-clip='xclip -selection clipboard <'
+alias mouse-to-clip='xclip -selection primary -o | xclip -selection clipboard'
+alias clip-to-mouse='xclip -selection clipboard -o | xclip -selection primary'
+
+alias please='sudo'
+
 alias tmov="mplayer -vf rotate=1,scale -zoom -xy 1080"
 alias testwatch="/home/erik/venv3/bin/testwatch"
 alias tw="/home/erik/venv3/bin/testwatch"
@@ -367,7 +375,7 @@ fi
 # bindkey -M vicmd '?' history-incremental-search-backward
 bindkey -M vicmd '?' znt-history-widget
 
-PATH=~/bin:/opt/vagrant/embedded/bin/:/opt/p4v/bin:/home/erik/android-sdk-linux/tools/:/home/erik/android-sdk-linux/platform-tools/:$PATH:$HOME/.rvm/bin:/opt/cisco/anyconnect/bin:/opt/jre1.8.0_91:/home/erik/Mongoclient-linux-x64:/opt/Unity/Editor
+PATH=~/bin:/opt/vagrant/embedded/bin/:/opt/p4v/bin:/home/erik/android-sdk-linux/tools/:/home/erik/android-sdk-linux/platform-tools/:$PATH:$HOME/.rvm/bin:/opt/cisco/anyconnect/bin:/opt/jre1.8.0_91:/home/erik/Mongoclient-linux-x64:/opt/Unity/Editor:~/.local/bin
 # :/opt/Unity/MonoDevelop/bin
 
 if [ -e ~/.rvm/scripts/rvm ]
