@@ -103,6 +103,18 @@ tyrannical.settings.group_children = true  -- Force children into the same tag a
 -- Use xprop to find window classes
 mytags = {
   {
+    name       = "Social",
+    exclusive  = true,
+    screen     = math.max(screen.count(), 1),
+    volatile   = true,
+    position   = 2,
+    layout     = awful.layout.suit.max,
+    mwfact     = .20,
+    class = {
+      "social", "Pidgin", "Rambox"
+    }
+  },
+  {
     name       = "Term",
     exclusive  = true,
     screen     = {1,2,3,4},
@@ -110,18 +122,6 @@ mytags = {
     position   = 3,
     class      = {
       "URxvt", "urxvt", "xterm", "gnome-terminal"
-    }
-  },
-  {
-    name       = "Social",
-    exclusive  = true,
-    screen     = math.max(screen.count(), 1),
-    volatile   = true,
-    position   = 2,
-    layout     = awful.layout.suit.tile.left,
-    mwfact     = .20,
-    class = {
-      "social::URxvt", "Pidgin", "Rambox"
     }
   },
   {
@@ -467,6 +467,12 @@ globalkeys = gears.table.join(
                   }
               end),
 
+    awful.key({ modkey, "Shift" }, "d", function ()
+                 local t = awful.screen.focused().selected_tag
+                 if not t then return end
+                 t:delete()
+              end),
+
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
@@ -757,5 +763,14 @@ os.execute("setxkbmap us -variant mac")
 os.execute("xmodmap ~/.Xmodmap")
 os.execute("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &")
 os.execute("xsetwacom --set 19 MapToOutput HEAD-1")
+os.execute("xautolock -locker '/usr/bin/i3lock -ti /home/erik/rage.png' -time 30 -corners '00--' -notifier 'notify-send --urgency=critical --expire-time=5000 \"screen saver will activate in 30 seconds\"' -notify 30 &")
 -- os.execute("runonce.sh dropbox &")
+
+os.execute("xsetwacom --set 'Wacom Intuos PT M Pen stylus' MapToOutput HEAD-1")
+os.execute("xsetwacom --set 'Wacom Intuos PT M Pen stylus' button 2 2")
+-- os.execute("xsetwacom --set 'Wacom Intuos PT M Pen stylus' button 3 'key ctrl shift z'")
+os.execute("xsetwacom --set 'Wacom Intuos PT M Pad pad' button 1 'key ctrl z'")
+os.execute("xsetwacom --set 'Wacom Intuos PT M Pad pad' button 3 'key ctrl shift z'")
+os.execute("xsetwacom --set 'Wacom Intuos PT M Pad pad' button 8 'key insert'")
+os.execute("xsetwacom --set 'Wacom Intuos PT M Pad pad' button 9 3")
 -- }}}
