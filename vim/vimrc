@@ -14,7 +14,6 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'ivalkeen/vim-ctrlp-tjump'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'hallison/vim-markdown'
@@ -32,6 +31,8 @@ Plugin 'matthew-brett/vim-rst-sections'
 Plugin 'nvie/vim-rst-tables'
 Plugin 'vimwiki/vimwiki'
 Plugin 'xolox/vim-misc'
+Plugin 'mbbill/undotree'
+Plugin 'luochen1990/rainbow'
 
 call vundle#end()
 
@@ -155,6 +156,7 @@ autocmd BufRead,BufNewFile *.rb syntax on set ft=ruby
 autocmd BufRead,BufNewFile *.rb set ai
 autocmd FileType python set colorcolumn=120
 
+nnoremap <F2> :UndotreeToggle<CR>
 nnoremap <F3> :YcmCompleter GoTo<CR>
 nnoremap <F4> :let Tlist_Show_One_File=0<CR>
 
@@ -179,6 +181,11 @@ command -nargs=1 YG call GetYRElem(<f-args>)
 let g:ctrlp_map = '<c-f>'
 let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir']
 
+if has("persistent_undo")
+    set undodir=$HOME/.vim_undo
+    set undofile
+endif
+
 function! s:ctrlp_tags(ext)
     if !exists('g:ctrlp_builtins')
         run autoload/ctrlp.vim
@@ -201,13 +208,11 @@ set laststatus=2
 
 cmap w!! w !sudo tee > /dev/null %
 
-au VimEnter * RainbowParenthesesToggle
-au VimEnter * RainbowParenthesesLoadRound
-au VimEnter * RainbowParenthesesLoadSquare
-au VimEnter * RainbowParenthesesLoadBraces
+let g:rainbow_active = 1
 
 let g:strip_whitelines_at_eof=1
 let g:strip_whitespace_on_save = 1
+let g:strip_whitespace_confirm = 0
 
 let g:easytags_cmd = '/usr/bin/ctags-exuberant'
 let g:easytags_async = 1
