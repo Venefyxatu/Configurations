@@ -7,32 +7,35 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'mileszs/ack.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'ivalkeen/vim-ctrlp-tjump'
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-scripts/taglist.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'hallison/vim-markdown'
-Plugin 'vim-scripts/YankRing.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'alfredodeza/coveragepy.vim'
-Plugin 'Vimjas/vim-python-pep8-indent'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'nvie/vim-flake8'
-Plugin 'python-rope/ropevim'
-Plugin 'w0rp/ale'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'matthew-brett/vim-rst-sections'
-Plugin 'nvie/vim-rst-tables'
-Plugin 'vimwiki/vimwiki'
-Plugin 'xolox/vim-misc'
-Plugin 'mbbill/undotree'
-Plugin 'luochen1990/rainbow'
+Plugin 'VundleVim/Vundle.vim'               " Plugin management
+Plugin 'altercation/vim-colors-solarized'   " colorscheme
+Plugin 'mileszs/ack.vim'                    " ack-grep: language-aware grep
+Plugin 'kien/ctrlp.vim'                     " find files, methods, ...
+Plugin 'ivalkeen/vim-ctrlp-tjump'           " ctrl-p extension for fuzzy search
+Plugin 'fholgado/minibufexpl.vim'           " buffer explorer bar
+Plugin 'scrooloose/nerdtree'                " NERD tree: filesystem browsing
+Plugin 'kien/rainbow_parentheses.vim'       " Fancy coloured brackets
+Plugin 'vim-scripts/taglist.vim'            " shows tags in a sidebar
+Plugin 'tpope/vim-fugitive'                 " git functionality
+Plugin 'godlygeek/tabular'                  " aligning text
+Plugin 'plasticboy/vim-markdown'            " markdown syntax
+Plugin 'vim-scripts/YankRing.vim'           " history of previous yanks and deletes
+Plugin 'majutsushi/tagbar'                  " displays tags in the status bar (current method, for example)
+Plugin 'tpope/vim-unimpaired'               " fancy complementary pairs of keybindings with brackets
+Plugin 'alfredodeza/coveragepy.vim'         " integrate with coverage.py
+Plugin 'Vimjas/vim-python-pep8-indent'      " python indentation style
+Plugin 'Valloric/YouCompleteMe'             " code completion
+Plugin 'nvie/vim-flake8'                    " runs current file through flake8
+Plugin 'python-rope/ropevim'                " python refactoring, code assist, ...
+Plugin 'w0rp/ale'                           " async linting / fixing
+Plugin 'ntpeters/vim-better-whitespace'     " better whitespace highlighting
+Plugin 'matthew-brett/vim-rst-sections'     " help making sections in RST documents
+Plugin 'nvie/vim-rst-tables'                " help making tables in RST documents
+Plugin 'vimwiki/vimwiki'                    " gather knowledge in vim, wiki-style
+Plugin 'xolox/vim-misc'                     " vim loading scripts, miscellaneous, dependency of other plugins
+Plugin 'mbbill/undotree'                    " undo history, with branching
+Plugin 'Yggdroot/indentLine'                " lines to show indentation levels
+" Plugin 'xolox/vim-easytags'                 " actual tag generation
 
 call vundle#end()
 
@@ -46,7 +49,7 @@ filetype plugin indent on
 let g:solarized_termtrans=1
 syntax enable
 set background=dark
-colorscheme iceberg
+colorscheme solarized
 
 set hlsearch
 set cursorline
@@ -72,6 +75,24 @@ if version >= 703
                \set relativenumber <Bar>
                \endif <cr>
 endif
+
+" Auto-align on pipe in markdown documents
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p) && &filetype == 'markdown'
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+" end auto-align on type
+
+
+
 set ruler
 
 "Syntastic
@@ -209,6 +230,11 @@ set laststatus=2
 cmap w!! w !sudo tee > /dev/null %
 
 let g:rainbow_active = 1
+au VimEnter * RainbowParenthesesActivate
+au VimEnter * RainbowParenthesesLoadRound
+au VimEnter * RainbowParenthesesLoadSquare
+au VimEnter * RainbowParenthesesLoadBraces
+au VimEnter * RainbowParenthesesLoadChevron
 
 let g:strip_whitelines_at_eof=1
 let g:strip_whitespace_on_save = 1
@@ -218,7 +244,9 @@ let g:easytags_cmd = '/usr/bin/ctags-exuberant'
 let g:easytags_async = 1
 let g:easytags_file = './.vimtags'
 let g:easytags_autorecurse = 1
-
+let g:easytags_autohighlight = 0
+let g:easytags_opts = ['--fields=+1']
+let g:easytags_python_enabled = 1
 
 set tags=.vimtags
 

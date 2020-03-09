@@ -23,6 +23,7 @@ alias iphone='shotwell'
 
 alias tmov="mplayer -vf rotate=1,scale -zoom -xy 1080"
 alias testwatch="/home/erik/venv3/bin/testwatch"
+alias scalerips="venv/bin/testdriver show portforwards | awk '/scaler/ {print \$3}' | awk -F':' '{print \$1}' | sort | uniq"
 alias tw="/home/erik/venv3/bin/testwatch"
 alias testwatchoutput="/home/erik/venv3/bin/testwatchoutput"
 alias two="/home/erik/venv3/bin/testwatchoutput"
