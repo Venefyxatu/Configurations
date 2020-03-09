@@ -19,6 +19,8 @@ alias clip-to-mouse='xclip -selection clipboard -o | xclip -selection primary'
 
 alias please='sudo'
 
+alias iphone='shotwell'
+
 alias tmov="mplayer -vf rotate=1,scale -zoom -xy 1080"
 alias testwatch="/home/erik/venv3/bin/testwatch"
 alias tw="/home/erik/venv3/bin/testwatch"
