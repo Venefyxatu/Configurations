@@ -523,6 +523,7 @@ globalkeys = gears.table.join(
     -- Menubar
     awful.key({ modkey }, "F1", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
+    awful.key({ modkey }, "F2", function() awful.util.spawn("/home/erik/jenkins_shot") end),
     -- awful.key({ modkey }, "F12", function () awful.util.spawn("i3lock -ti /home/erik/Downloads/factorio_factions/Landscape/FFTrains_1920_NoText.png") end)
     awful.key({ modkey }, "F12", function () awful.util.spawn("i3lock -ti /home/erik/rage.png") end)
 )
