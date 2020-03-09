@@ -16,7 +16,7 @@ set editor="vim"                                  # Use vim for editing messages
 set forward_quote=yes                             # Indent forwarded messages in the main body.  See also indent_string
 set header_cache="~/.mailcache"                   # Cache headers to prevent downloading them every time.
 set help=no                                       # Don't display help lines on the first line of the screen
-set imap_idle=yes                                 # Use the IMAP IDLE extension.  `man muttrc' if your connection seems to freeze every now and then 
+set imap_idle=yes                                 # Use the IMAP IDLE extension.  `man muttrc' if your connection seems to freeze every now and then
 set imap_servernoise=no                           # Warnings != errors
 set include=yes                                   # Include the body of messages I'm replying to by default.  I will delete myself if not necessary.
 set mail_check=60                                 # Check for new mail every minute
