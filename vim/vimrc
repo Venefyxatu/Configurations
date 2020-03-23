@@ -45,11 +45,26 @@ call vundle#end()
 filetype plugin indent on
 
 
-" Solarized
-let g:solarized_termtrans=1
+" Colorscheme
+
+" Returns the list of available color schemes
+function! GetColorSchemes()
+   return uniq(sort(map(
+   \  globpath(&runtimepath, "colors/*.vim", 0, 1),
+   \  'fnamemodify(v:val, ":t:r")'
+   \)))
+endfunction
+
+let s:schemes = GetColorSchemes()
+if index(s:schemes, 'solarized') >= 0
+   colorscheme solarized
+   let g:solarized_termtrans=1
+elseif index(s:schemes, 'darkblue') >= 0
+   colorscheme darkblue
+endif
+
 syntax enable
 set background=dark
-colorscheme solarized
 
 set hlsearch
 set cursorline
