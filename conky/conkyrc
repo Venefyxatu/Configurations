@@ -13,7 +13,6 @@ conky.config = {
     use_xft = yes,
     gap_x = 5,
     gap_y = 0,
-    maximum_width = 1260,
     net_avg_samples = 2,
     no_buffers = yes,
     out_to_console = no,
@@ -64,7 +63,6 @@ ${upspeedgraph enp3s0 8,40 000000 ff0000 -t}    \
 ${alignr}${color1}tun0 [${color3}${addr tun0}${color}]: ${color1}Up:${color} ${upspeed tun0} ${color1} - Down:${color} ${downspeed tun0}     \
 ${downspeedgraph tun0 8,40 000000 00ff00 -t} \
 ${upspeedgraph tun0 8,40 000000 ff0000 -t} \
-${alignr}${color1}Battery: [${color3}${acpiacadapter}${color1}] ${color}${color3}${battery_percent BAT0}% ${battery_bar 5,40 BAT0}${color} | \
 ${color1}CPU: ${color} ${color2}${cpu}% ${cpubar cpu0 5,40}${color} ${color1}CPU1: ${color}${color3}${cpubar cpu1 5,40}${color} ${color1}CPU2:${color} ${color3}${cpubar cpu2 5,40} ${color} ${color1}CPU3:${color} ${color3}${cpubar cpu3 5,40} ${color} ${color1}CPU4:${color} ${color3}${cpubar cpu4 5,40} ${color}| \
 ${color1}RAM:${color} ${color3}${memperc}% ${membar 5,40}${color}
 
