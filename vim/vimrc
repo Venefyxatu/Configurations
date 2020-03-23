@@ -258,6 +258,7 @@ let g:easytags_autohighlight = 0
 let g:easytags_opts = ['--fields=+1']
 let g:easytags_python_enabled = 1
 
+let g:ycm_confirm_extra_conf = 0
 set tags=.vimtags
 
 nnoremap <c-]> :CtrlPtjump<cr>
