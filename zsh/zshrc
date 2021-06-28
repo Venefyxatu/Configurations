@@ -401,3 +401,7 @@ fwd () {
         [[ ! -z "$4" ]] && fiu="$4"
         sudo ssh -qx $fiu@$x -L $z:80:$y:80 -L $z:443:$y:443 -L $z:623:$y:623 -L $z:10443:$y:10443 -L $z:5900:$y:5900 -L $z:5901:$y:5901 -L $z:5120:$y:5120 -L $z:5123:$y:5123 -L $z:7578:$y:7578
 }
+
+kloon () {
+    git clone gitlab.amplidata.com:$1/$2
+}
