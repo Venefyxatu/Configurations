@@ -26,6 +26,8 @@ local blind = require("blind")
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
+local xrandr = require("xrandr")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -179,6 +181,17 @@ mytags = {
       "evince"
     }
   },
+  {
+    name       = "IDE",
+    exclusive  = true,
+    screen     = 1,
+    volatile   = true,
+    position   = 8,
+    layout     = awful.layout.suit.max,
+    class = {
+      "jetbrains-pycharm-ce"
+    }
+  }
   --[[
   {
     name       = "Gamedev",
@@ -339,7 +352,7 @@ end
 screen.connect_signal("property::geometry", set_wallpaper)
 --
 -- Create dummy bar to reserve space for Conky
-mystatusbar = awful.wibar({ position = "bottom", screen = 1, opacity = 0, stretch = true, ontop = false })
+mystatusbar = awful.wibar({ position = "bottom", height = 60, screen = 1, opacity = 0, stretch = true, ontop = false })
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
@@ -525,7 +538,8 @@ globalkeys = gears.table.join(
               {description = "show the menubar", group = "launcher"}),
     awful.key({ modkey }, "F2", function() awful.util.spawn("/home/erik/jenkins_shot") end),
     -- awful.key({ modkey }, "F12", function () awful.util.spawn("i3lock -ti /home/erik/Downloads/factorio_factions/Landscape/FFTrains_1920_NoText.png") end)
-    awful.key({ modkey }, "F12", function () awful.util.spawn("i3lock -ti /home/erik/rage.png") end)
+    awful.key({ modkey }, "F12", function () awful.util.spawn("i3lock -ti /home/erik/rage.png") end),
+    awful.key({ modkey }, "F3", function() xrandr.xrandr() end)
 )
 
 clientkeys = gears.table.join(
@@ -758,7 +772,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 os.execute("xrdb -merge ~/.Xresources")
 os.execute("/usr/bin/runonce.sh conky &")
-os.execute("/usr/bin/runonce.sh nm-applet &")
+os.execute("XDG_CURRENT_DESKTOP=GNOME /usr/bin/runonce.sh nm-tray &")
 os.execute("xcompmgr -D 6 -c -C -f -n &")
 os.execute("setxkbmap us -variant mac")
 os.execute("xmodmap ~/.Xmodmap")

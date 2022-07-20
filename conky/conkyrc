@@ -6,11 +6,13 @@ conky.config = {
     default_color = '063158',
     default_outline_color = '063158',
     default_shade_color = aaaaaa,
+	double_buffer = yes,
     draw_borders = no,
     draw_graph_borders = yes,
     draw_outline = no,
     draw_shades = no,
-    use_xft = yes,
+    use_xft = true,
+	font = 'monaco:size=8',
     gap_x = 5,
     gap_y = 0,
     net_avg_samples = 2,
@@ -33,6 +35,8 @@ conky.config = {
 	color1 = '888888',
 	color2 = '047090',
 	color3 = '03DBFC',
+
+	use_spacer = 'right',
 }
 --[[
 
@@ -47,8 +51,8 @@ color2 = '888888',
 color3 = '444444',
 
 -- Up and down speed included
-${alignr}${color1}enp3s0 [${color3}${addr enp3s0}${color}]: ${color1}Up:${color} ${upspeed enp3s0} ${color1} - Down:${color} ${downspeed enp3s0}     \
-${alignr}${color1}tun0 [${color3}${addr tun0}${color}]: ${color1}Up:${color} ${upspeed tun0} ${color1} - Down:${color} ${downspeed tun0}     \
+${alignr}${color1}enp0s31f6 [${color3}${addr enp0s31f6}${color}]: ${color1}Up:${color} ${upspeed enp0s31f6} ${color1} - Down:${color} ${downspeed enp0s31f6}     \
+${alignr}${color1}wlp82s0 [${color3}${addr wlp82s0}${color}]: ${color1}Up:${color} ${upspeed wlp82s0} ${color1} - Down:${color} ${downspeed wlp82s0}     \
 
 
 
@@ -56,16 +60,16 @@ ${alignr}${color1}tun0 [${color3}${addr tun0}${color}]: ${color1}Up:${color} ${u
 
 conky.text = [[
 
-${color1}/dev/sda:${color} ${diskiograph /dev/sda 8,40 000000 ff0000 -t}   \
-${alignr}${color1}enp3s0 [${color3}${addr enp3s0}${color}]: ${color1}Up:${color} ${upspeed enp3s0} ${color1} - Down:${color} ${downspeed enp3s0}     \
-${downspeedgraph enp3s0 8,40 000000 00ff00 -t} \
-${upspeedgraph enp3s0 8,40 000000 ff0000 -t}    \
-${alignr}${color1}tun0 [${color3}${addr tun0}${color}]: ${color1}Up:${color} ${upspeed tun0} ${color1} - Down:${color} ${downspeed tun0}     \
-${downspeedgraph tun0 8,40 000000 00ff00 -t} \
-${upspeedgraph tun0 8,40 000000 ff0000 -t} \
-${color1}CPU: ${color} ${color2}${cpu}% ${cpubar cpu0 5,40}${color} ${color1}CPU1: ${color}${color3}${cpubar cpu1 5,40}${color} ${color1}CPU2:${color} ${color3}${cpubar cpu2 5,40} ${color} ${color1}CPU3:${color} ${color3}${cpubar cpu3 5,40} ${color} ${color1}CPU4:${color} ${color3}${cpubar cpu4 5,40} ${color}| \
-${color1}RAM:${color} ${color3}${memperc}% ${membar 5,40}${color}
-
+${color1}/dev/nvme0:${color} ${diskiograph /dev/nvme0n1 20,100 000000 ff0000 -t} \
+${color1}enp0s31f6 [${color3}${addr enp0s31f6}${color}]: ${color1}Up:${color} ${upspeed enp0s31f6} ${color1} - Down:${color} ${downspeed enp0s31f6}     \
+${downspeedgraph enp0s31f6 20,100 000000 00ff00 -t} \
+${upspeedgraph enp0s31f6 20,100 000000 ff0000 -t}    \
+${color1}wlp82s0 [${color3}${addr wlp82s0}${color}]: ${color1}Up:${color} ${upspeed wlp82s0} ${color1} - Down:${color} ${downspeed wlp82s0}     \
+${downspeedgraph wlp82s0 20,100 000000 00ff00 -t} \
+${upspeedgraph wlp82s0 20,100 000000 ff0000 -t} \
+${color1}CPU: ${color} ${color2}${cpu}% ${cpubar cpu0 20,80}${color} ${color1}1: ${color}${color3}${cpubar cpu1 20,80}${color} ${color1}2:${color} ${color3}${cpubar cpu2 20,80} ${color} ${color1}3:${color} ${color3}${cpubar cpu3 20,80} ${color} ${color1}4:${color} ${color3}${cpubar cpu4 20,80} ${color}${color1}5:${color} ${color3}${cpubar cpu5 20,80} ${color}${color1}6:${color} ${color3}${cpubar cpu6 20,80} ${color}${color1}7:${color} ${color3}${cpubar cpu7 20,80} ${color}${color1}8:${color} ${color3}${cpubar cpu8 20,80} ${color}${color1}9:${color} ${color3}${cpubar cpu9 20,80} ${color}${color1}10:${color} ${color3}${cpubar cpu10 20,80} ${color}${color1}11:${color} ${color3}${cpubar cpu11 20,80} ${color}${color1}12:${color} ${color3}${cpubar cpu12 20,80} ${color}| \
+${color1}RAM:${color} ${color3}${memperc}% ${membar 20,100}${color}
+${color2} ${battery_bar 5,3750}${color} ${color3}${battery_short}${color}
 ]];
 
 -- vim: ts=4 sw=4 noet ai cindent syntax=lua
