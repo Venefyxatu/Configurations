@@ -160,14 +160,14 @@ mytags = {
     }
   },
   {
-    name       = "Chrome",
+    name       = "Brave",
     exclusive  = true,
     screen     = {1,2,3,4},
     volatile   = true,
     position   = 9,
     layout     = awful.layout.suit.max,
     class = {
-      "google-chrome"
+      "brave-browser"
     }
   },
   {
@@ -539,7 +539,9 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "F2", function() awful.util.spawn("/home/erik/jenkins_shot") end),
     -- awful.key({ modkey }, "F12", function () awful.util.spawn("i3lock -ti /home/erik/Downloads/factorio_factions/Landscape/FFTrains_1920_NoText.png") end)
     awful.key({ modkey }, "F12", function () awful.util.spawn("i3lock -ti /home/erik/rage.png") end),
-    awful.key({ modkey }, "F3", function() xrandr.xrandr() end)
+    awful.key({ modkey }, "F3", function() xrandr.xrandr() end),
+    awful.key({ }, "XF86MonBrightnessUp", function() awful.util.spawn("sudo /usr/bin/sysbacklight up") end),
+    awful.key({ }, "XF86MonBrightnessDown", function() awful.util.spawn("sudo /usr/bin/sysbacklight down") end)
 )
 
 clientkeys = gears.table.join(
@@ -772,15 +774,15 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 os.execute("xrdb -merge ~/.Xresources")
 os.execute("/usr/bin/runonce.sh conky &")
-os.execute("XDG_CURRENT_DESKTOP=GNOME /usr/bin/runonce.sh nm-tray &")
-os.execute("xcompmgr -D 6 -c -C -f -n &")
+-- os.execute("XDG_CURRENT_DESKTOP=GNOME /usr/bin/runonce.sh nm-tray &")
+-- os.execute("xcompmgr -D 6 -c -C -f -n &")
 os.execute("setxkbmap us -variant mac")
 os.execute("xmodmap ~/.Xmodmap")
-os.execute("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &")
-os.execute("xsetwacom --set 19 MapToOutput HEAD-1")
+-- os.execute("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &")
 os.execute("xautolock -locker '/usr/bin/i3lock -ti /home/erik/rage.png' -time 30 -corners '00--' -notifier 'notify-send --urgency=critical --expire-time=5000 \"screen saver will activate in 30 seconds\"' -notify 30 &")
 -- os.execute("runonce.sh dropbox &")
 
+os.execute("xsetwacom --set 19 MapToOutput HEAD-1")
 os.execute("xsetwacom --set 'Wacom Intuos PT M Pen stylus' MapToOutput HEAD-1")
 os.execute("xsetwacom --set 'Wacom Intuos PT M Pen stylus' button 2 2")
 -- os.execute("xsetwacom --set 'Wacom Intuos PT M Pen stylus' button 3 'key ctrl shift z'")

@@ -20,14 +20,13 @@ conky.config = {
     out_to_console = no,
     out_to_stderr = no,
     extra_newline = no,
-    own_window = no,
+	own_window = false,
     own_window_class = Conky,
     own_window_type = desktop,
     own_window_transparent = yes,
     stippled_borders = 0,
     update_interval = 1.0,
     uppercase = no,
-    use_spacer = left,
     show_graph_scale = no,
     show_graph_range = no,
     format_human_readable = yes,
@@ -67,9 +66,9 @@ ${upspeedgraph enp0s31f6 20,100 000000 ff0000 -t}    \
 ${color1}wlp82s0 [${color3}${addr wlp82s0}${color}]: ${color1}Up:${color} ${upspeed wlp82s0} ${color1} - Down:${color} ${downspeed wlp82s0}     \
 ${downspeedgraph wlp82s0 20,100 000000 00ff00 -t} \
 ${upspeedgraph wlp82s0 20,100 000000 ff0000 -t} \
-${color1}CPU: ${color} ${color2}${cpu}% ${cpubar cpu0 20,80}${color} ${color1}1: ${color}${color3}${cpubar cpu1 20,80}${color} ${color1}2:${color} ${color3}${cpubar cpu2 20,80} ${color} ${color1}3:${color} ${color3}${cpubar cpu3 20,80} ${color} ${color1}4:${color} ${color3}${cpubar cpu4 20,80} ${color}${color1}5:${color} ${color3}${cpubar cpu5 20,80} ${color}${color1}6:${color} ${color3}${cpubar cpu6 20,80} ${color}${color1}7:${color} ${color3}${cpubar cpu7 20,80} ${color}${color1}8:${color} ${color3}${cpubar cpu8 20,80} ${color}${color1}9:${color} ${color3}${cpubar cpu9 20,80} ${color}${color1}10:${color} ${color3}${cpubar cpu10 20,80} ${color}${color1}11:${color} ${color3}${cpubar cpu11 20,80} ${color}${color1}12:${color} ${color3}${cpubar cpu12 20,80} ${color}| \
+${color1}CPU: ${color} ${color2}${cpu}% ${cpubar cpu0 20,80}${color} ${color1}1: ${color}${color3}${cpubar cpu1 20,80}${color} ${color1}2:${color} ${color3}${cpubar cpu2 20,80} ${color} ${color1}3:${color} ${color3}${cpubar cpu3 20,80} ${color} ${color1}4:${color} ${color3}${cpubar cpu4 20,80} ${color}| \
 ${color1}RAM:${color} ${color3}${memperc}% ${membar 20,100}${color}
-${color2} ${battery_bar 5,3750}${color} ${color3}${battery_short}${color}
+${color2} ${battery_bar 5,3750 BAT1}${color} ${color3}${battery_short BAT1}${color}
 ]];
 
 -- vim: ts=4 sw=4 noet ai cindent syntax=lua
