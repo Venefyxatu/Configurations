@@ -113,7 +113,7 @@ mytags = {
     layout     = awful.layout.suit.max,
     mwfact     = .20,
     class = {
-      "social", "Pidgin", "Rambox"
+      "social", "Pidgin", "Rambox", "Discord", "Signal"
     }
   },
   {
