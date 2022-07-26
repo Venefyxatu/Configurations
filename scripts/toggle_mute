@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+let MUTE=$(pulsemixer --get-mute)
+
+if [[ ${MUTE} -eq 0 ]]
+then
+    pulsemixer --mute
+else
+    pulsemixer --unmute
+fi

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ $(pulsemixer --get-mute) -eq 1 ]];
+    then echo "0%"
+else
+    pactl list sinks | awk '/Volume:/ {print $5}' | head -n 1
+fi

@@ -109,7 +109,7 @@ mytags = {
     exclusive  = true,
     screen     = math.max(screen.count(), 1),
     volatile   = true,
-    position   = 2,
+    position   = 1,
     layout     = awful.layout.suit.max,
     mwfact     = .20,
     class = {
@@ -121,9 +121,9 @@ mytags = {
     exclusive  = true,
     screen     = {1,2,3,4},
     volatile   = true,
-    position   = 3,
+    position   = 2,
     class      = {
-      "URxvt", "urxvt", "xterm", "gnome-terminal"
+      "URxvt", "urxvt", "xterm", "gnome-terminal", "terminator"
     }
   },
   {
@@ -131,10 +131,10 @@ mytags = {
     exclusive  = true,
     screen     = {1,2,3,4},
     volatile   = true,
-    position   = 9,
+    position   = 3,
     layout     = awful.layout.suit.max,
     class = {
-      "Firefox"
+      "Firefox", "brave-browser"
     }
   },
   {
@@ -157,17 +157,6 @@ mytags = {
     layout     = awful.layout.suit.max,
     class = {
       "Wine"
-    }
-  },
-  {
-    name       = "Brave",
-    exclusive  = true,
-    screen     = {1,2,3,4},
-    volatile   = true,
-    position   = 9,
-    layout     = awful.layout.suit.max,
-    class = {
-      "brave-browser"
     }
   },
   {
@@ -352,7 +341,8 @@ end
 screen.connect_signal("property::geometry", set_wallpaper)
 --
 -- Create dummy bar to reserve space for Conky
-mystatusbar = awful.wibar({ position = "bottom", height = 60, screen = 1, opacity = 0, stretch = true, ontop = false })
+-- This requires a composite window manager like xcompmgr (started further down in the file) for the transparency to work!
+mystatusbar = awful.wibar({ position = "bottom", height = 35, screen = 1, opacity = 0, stretch = true, ontop = false })
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
@@ -541,7 +531,14 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "F12", function () awful.util.spawn("i3lock -ti /home/erik/rage.png") end),
     awful.key({ modkey }, "F3", function() xrandr.xrandr() end),
     awful.key({ }, "XF86MonBrightnessUp", function() awful.util.spawn("sudo /usr/bin/sysbacklight up") end),
-    awful.key({ }, "XF86MonBrightnessDown", function() awful.util.spawn("sudo /usr/bin/sysbacklight down") end)
+    awful.key({ }, "XF86MonBrightnessDown", function() awful.util.spawn("sudo /usr/bin/sysbacklight down") end),
+    awful.key({ }, "XF86AudioMute", function() awful.util.spawn("/usr/bin/toggle_mute") end),
+    awful.key({ "Shift" }, "XF86AudioLowerVolume", function() awful.util.spawn("/usr/bin/pulsemixer --change-volume -5") end),
+    awful.key({ "Shift" }, "XF86AudioRaiseVolume", function() awful.util.spawn("/usr/bin/pulsemixer --change-volume +5") end),
+    awful.key({ "Control" }, "XF86AudioLowerVolume", function() awful.util.spawn("/usr/bin/pulsemixer --change-volume -20") end),
+    awful.key({ "Control" }, "XF86AudioRaiseVolume", function() awful.util.spawn("/usr/bin/pulsemixer --change-volume +20") end),
+    awful.key({ }, "XF86AudioLowerVolume", function() awful.util.spawn("/usr/bin/pulsemixer --change-volume -10") end),
+    awful.key({ }, "XF86AudioRaiseVolume", function() awful.util.spawn("/usr/bin/pulsemixer --change-volume +10") end)
 )
 
 clientkeys = gears.table.join(
@@ -775,7 +772,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 os.execute("xrdb -merge ~/.Xresources")
 os.execute("/usr/bin/runonce.sh conky &")
 -- os.execute("XDG_CURRENT_DESKTOP=GNOME /usr/bin/runonce.sh nm-tray &")
--- os.execute("xcompmgr -D 6 -c -C -f -n &")
+os.execute("xcompmgr  -c -f -F &")
 os.execute("setxkbmap us -variant mac")
 os.execute("xmodmap ~/.Xmodmap")
 -- os.execute("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &")
