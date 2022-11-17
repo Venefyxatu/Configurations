@@ -2,7 +2,7 @@ URxvt.font: xft:monaco:size=12
 URxvt.boldFont: xft:monaco-bold:size=12
 !URxvt.font: xft:monaco:size=12
 !URxvt.boldFont: xft:monaco-bold:size=12
-URxvt*letterSpace: -8
+!URxvt*letterSpace: -8
 URxvt.iconFile: /usr/share/icons/hicolor/16x16/apps/terminator.png
 URxvt*scrollBar: false
 URxvt*scrollstyle: rxvt
@@ -25,7 +25,7 @@ URxvt.internalBorder: 0
 URxvt.perl-lib: /home/erik/source/urxvt-perls
 URxvt.perl-ext-common: default,keyboard-select,matcher
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
-URxvt.keyboard-select.launcher: /usr/bin/google-chrome
+URxvt.keyboard-select.launcher: /usr/bin/firefox
 URxvt.keyboard-select.underline: true
 URxvt.keyboard-select.clipboard: true
 URxvt.matcher.button: 1
