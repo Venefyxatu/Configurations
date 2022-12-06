@@ -4,7 +4,7 @@ set nocompatible
 filetype off
 
 " Add Vundle to runtimepath
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/source/tools/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'               " Plugin management
@@ -12,13 +12,14 @@ Plugin 'altercation/vim-colors-solarized'   " colorscheme
 Plugin 'mileszs/ack.vim'                    " ack-grep: language-aware grep
 Plugin 'kien/ctrlp.vim'                     " find files, methods, ...
 Plugin 'ivalkeen/vim-ctrlp-tjump'           " ctrl-p extension for fuzzy search
-Plugin 'fholgado/minibufexpl.vim'           " buffer explorer bar
-Plugin 'scrooloose/nerdtree'                " NERD tree: filesystem browsing
+"Plugin 'scrooloose/nerdtree'                " NERD tree: filesystem browsing
 Plugin 'kien/rainbow_parentheses.vim'       " Fancy coloured brackets
 Plugin 'vim-scripts/taglist.vim'            " shows tags in a sidebar
 Plugin 'tpope/vim-fugitive'                 " git functionality
-Plugin 'godlygeek/tabular'                  " aligning text
-Plugin 'plasticboy/vim-markdown'            " markdown syntax
+Plugin 'tpope/vim-vinegar'                  " fs browser
+Plugin 'tpope/vim-commentary'               " auto-comment
+"Plugin 'godlygeek/tabular'                  " aligning text
+"Plugin 'plasticboy/vim-markdown'            " markdown syntax
 Plugin 'vim-scripts/YankRing.vim'           " history of previous yanks and deletes
 Plugin 'majutsushi/tagbar'                  " displays tags in the status bar (current method, for example)
 Plugin 'tpope/vim-unimpaired'               " fancy complementary pairs of keybindings with brackets
@@ -36,6 +37,7 @@ Plugin 'xolox/vim-misc'                     " vim loading scripts, miscellaneous
 Plugin 'mbbill/undotree'                    " undo history, with branching
 Plugin 'Yggdroot/indentLine'                " lines to show indentation levels
 " Plugin 'xolox/vim-easytags'                 " actual tag generation
+Plugin 'dhruvasagar/vim-table-mode'         " Insert tables
 
 call vundle#end()
 
@@ -78,6 +80,7 @@ set noerrorbells
 set number
 set nobackup
 set hlsearch
+set shortmess-=S  " search result counter
 let NERDTreeWinSize=46
 let NERDTreeIgnore = ['\.pyc$']
 
@@ -141,6 +144,9 @@ highlight ModeMsg guibg=blue guifg=green gui=NONE cterm=NONE term=NONE
 
 au! BufNewFile,BufRead *.gob set filetype=cpp
 au! BufNewFile,BufRead *.dbk set filetype=xml
+au! BufNewFile,BufRead *.hoc set filetype=hoc
+au! BufNewFile,BufRead *.nmodl set filetype=nmodl
+
 filetype on
 set ai
 set showmatch
@@ -187,10 +193,10 @@ let &guicursor = &guicursor . ",a:blinkon0"
 autocmd BufRead,BufNewFile *.py,*.rscript syntax on set ft=python
 autocmd BufRead,BufNewFile *.py,*.rscript set ai
 autocmd BufRead,BufNewFile *.rscript,*.py,*sh set tabstop=4 expandtab shiftwidth=4
-autocmd BufRead,BufNewFile *.lua,*.rb set tabstop=2 expandtab shiftwidth=2
+autocmd BufRead,BufNewFile *.lua,*.rb,*.cpp set tabstop=2 expandtab shiftwidth=2
 autocmd BufRead,BufNewFile *.rb syntax on set ft=ruby
 autocmd BufRead,BufNewFile *.rb set ai
-autocmd FileType python set colorcolumn=120
+autocmd FileType python set colorcolumn=80
 
 nnoremap <F2> :UndotreeToggle<CR>
 nnoremap <F3> :YcmCompleter GoTo<CR>
@@ -202,7 +208,7 @@ noremap <silent> <F6> :PyLintToggle<CR>
 noremap <silent> <F7> :NERDTreeToggle<CR>
 nnoremap <silent> <F8> :TagbarToggle<CR>
 
-noremap <silent> <F9> :MBEToggle<CR>
+noremap <silent> <F9> :CtrlPBuffer<CR>
 nnoremap <silent> <F10> :set ft=xml<CR>:%s/\(<[^\/].\{-}>\)/\r\1/g<CR>:%s/\(<\/.\{-}>\)\(<\/\)/>\1\r\2/g<CR>:g/^$/d<CR>vG=<CR>:%s/&#10;/\r/g<CR>
 nnoremap <silent> <F11> :YRShow<CR>
 
@@ -260,6 +266,11 @@ let g:easytags_python_enabled = 1
 
 let g:ycm_confirm_extra_conf = 0
 set tags=.vimtags
+
+let g:vimwiki_url_maxsave=0
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
+let g:table_mode_corner='|'  " md compatible tables
 
 nnoremap <c-]> :CtrlPtjump<cr>
 nnoremap <c-h> :let @/ = ""<cr>
