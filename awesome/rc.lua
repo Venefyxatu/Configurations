@@ -107,21 +107,23 @@ mytags = {
   {
     name       = "Social",
     exclusive  = true,
-    screen     = math.max(screen.count(), 1),
-    volatile   = true,
+    -- screen     = math.max(screen.count(), 1),
+    screen     = {1,2},
+    volatile   = false,
     position   = 1,
     layout     = awful.layout.suit.max,
     mwfact     = .20,
     class = {
-      "social", "Pidgin", "Rambox", "Discord", "Signal"
+      "social", "Pidgin", "Rambox", "Discord", "Signal", "Slack"
     }
   },
   {
     name       = "Term",
     exclusive  = true,
     screen     = {1,2,3,4},
-    volatile   = true,
+    volatile   = false,
     position   = 2,
+    layout     = awful.layout.suit.max,
     class      = {
       "URxvt", "urxvt", "xterm", "gnome-terminal", "terminator"
     }
@@ -130,7 +132,7 @@ mytags = {
     name       = "Web",
     exclusive  = true,
     screen     = {1,2,3,4},
-    volatile   = true,
+    volatile   = false,
     position   = 3,
     layout     = awful.layout.suit.max,
     class = {
@@ -138,21 +140,10 @@ mytags = {
     }
   },
   {
-    name       = "Writing",
-    exclusive  = true,
-    screen     = 2,
-    volatile   = true,
-    position   = 4,
-    layout     = awful.layout.suit.max,
-    class = {
-      "scrivener"
-    }
-  },
-  {
     name       = "Wine",
     exclusive  = false,
     screen     = web_screen,
-    volatile   = true,
+    volatile   = false,
     position   = 9,
     layout     = awful.layout.suit.max,
     class = {
@@ -163,7 +154,7 @@ mytags = {
     name       = "PDF",
     exclusive  = true,
     screen     = 1,
-    volatile   = true,
+    volatile   = false,
     position   = 9,
     layout     = awful.layout.suit.fair,
     class = {
