@@ -38,6 +38,8 @@ Plugin 'mbbill/undotree'                    " undo history, with branching
 Plugin 'Yggdroot/indentLine'                " lines to show indentation levels
 " Plugin 'xolox/vim-easytags'                 " actual tag generation
 Plugin 'dhruvasagar/vim-table-mode'         " Insert tables
+Plugin 'psf/black'                          " Uncompromizing Python formatter
+Plugin 'fisadev/vim-isort'                  " Sort Python imports
 
 call vundle#end()
 
@@ -196,13 +198,14 @@ autocmd BufRead,BufNewFile *.rscript,*.py,*sh set tabstop=4 expandtab shiftwidth
 autocmd BufRead,BufNewFile *.lua,*.rb,*.cpp set tabstop=2 expandtab shiftwidth=2
 autocmd BufRead,BufNewFile *.rb syntax on set ft=ruby
 autocmd BufRead,BufNewFile *.rb set ai
-autocmd FileType python set colorcolumn=80
+autocmd FileType python set colorcolumn=99
 
 nnoremap <F2> :UndotreeToggle<CR>
 nnoremap <F3> :YcmCompleter GoTo<CR>
 nnoremap <F4> :let Tlist_Show_One_File=0<CR>
 
-nnoremap <F5> :Coveragepy show<CR>
+nnoremap <F5> :Coveragepy session<CR>
+nnoremap <leader><F5> :Coveragepy report<CR>
 
 noremap <silent> <F6> :PyLintToggle<CR>
 noremap <silent> <F7> :NERDTreeToggle<CR>
@@ -272,5 +275,11 @@ let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}
 
 let g:table_mode_corner='|'  " md compatible tables
 
+let g:vim_json_conceal=0
+
 nnoremap <c-]> :CtrlPtjump<cr>
 nnoremap <c-h> :let @/ = ""<cr>
+nnoremap <c-s> :Black<cr>:!isort %<cr>
+nnoremap <c-t> :!coverage run --source=src -m pytest -vs tests/<cr>
+
+set ignorecase
