@@ -1,1 +1,3 @@
 xrdb -merge ~/.Xresources
+xinput set-prop 12 315 1
+xinput set-prop 12 294 1

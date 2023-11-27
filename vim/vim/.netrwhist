@@ -1,9 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/erik/.oh-my-zsh/plugins/gpg-agent'
-let g:netrw_dirhist_2='/home/erik/.oh-my-zsh/plugins/lol'
-let g:netrw_dirhist_3='/home/erik/.oh-my-zsh'
-let g:netrw_dirhist_4='/home/erik/.config/awesome/shifty'
-let g:netrw_dirhist_5='/home/erik/test'
-let g:netrw_dirhist_6='/home/erik/.vim/bundle/ctrlp/ctrlp.vim'
-let g:netrw_dirhist_7='/home/erik/.vim'
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/erik/source/private/angry-archive/src'
+let g:netrw_dirhist_3='/home/erik/source/private/angry-archive'
+let g:netrw_dirhist_2='/home/erik/.config/broot'
+let g:netrw_dirhist_1='/home/erik'

@@ -2,7 +2,7 @@ URxvt.font: xft:monaco:size=12
 URxvt.boldFont: xft:monaco-bold:size=12
 !URxvt.font: xft:monaco:size=12
 !URxvt.boldFont: xft:monaco-bold:size=12
-!URxvt*letterSpace: -8
+!URxvt*letterSpace: -3
 URxvt.iconFile: /usr/share/icons/hicolor/16x16/apps/terminator.png
 URxvt*scrollBar: false
 URxvt*scrollstyle: rxvt

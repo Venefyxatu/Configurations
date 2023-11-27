@@ -29,8 +29,8 @@ XTerm*saveLines:       8192
 XTerm*scrollBar:       false
 
 ! Use multiples of 96 for best results
-Xft.dpi: 110
-!Xft.dpi: 96
+!Xft.dpi: 110
+Xft.dpi: 96
 ! Xft.dpi: 192
 
 

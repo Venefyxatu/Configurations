@@ -778,4 +778,7 @@ os.execute("xsetwacom --set 'Wacom Intuos PT M Pad pad' button 1 'key ctrl z'")
 os.execute("xsetwacom --set 'Wacom Intuos PT M Pad pad' button 3 'key ctrl shift z'")
 os.execute("xsetwacom --set 'Wacom Intuos PT M Pad pad' button 8 'key insert'")
 os.execute("xsetwacom --set 'Wacom Intuos PT M Pad pad' button 9 3")
+
+os.execute("xinput set-prop 'MSFT0004:00 06CB:CE2D Touchpad' 'libinput Tapping Enabled' 1")
+os.execute("xinput set-prop 'MSFT0004:00 06CB:CE2D Touchpad' 'libinput Natural Scrolling Enabled' 1")
 -- }}}
